@@ -1,11 +1,11 @@
-package com.woon.wisestudytest1.login.models.responseDto;
+package com.woon.wisestudytest1.util;
 
-public class LoginResponseDto {
+public class ApiResponse<T> {
     private Integer code;
     private String status;
-    private String message;
+    private T message;
 
-    public LoginResponseDto(Integer code, String status, String message) {
+    public ApiResponse(Integer code, String status, T message) {
         this.code = code;
         this.status = status;
         this.message = message;
@@ -27,11 +27,11 @@ public class LoginResponseDto {
         this.status = status;
     }
 
-    public String getMessage() {
+    public T getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(T message) {
         this.message = message;
     }
 }
