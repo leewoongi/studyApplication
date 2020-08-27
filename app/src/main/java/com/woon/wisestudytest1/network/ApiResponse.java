@@ -1,4 +1,4 @@
-package com.woon.wisestudytest1.util;
+package com.woon.wisestudytest1.network;
 
 public class ApiResponse<T> {
     private Integer code;

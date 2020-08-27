@@ -33,22 +33,6 @@ public class LoginPresenter implements LoginContract.presenter {
         localModel = new LocalLoginModel();
     }
 
-    // 카카오서버와 통신 여부 확인
-    @Override
-    public void checkLogin() {
-        Session.getCurrentSession().addCallback(new ISessionCallback() {
-            @Override
-            public void onSessionOpened() {
-                Log.i("KAKAO_SESSION", "로그인 성공");
-            }
-
-            @Override
-            public void onSessionOpenFailed(KakaoException exception) {
-                Log.e("KAKAO_SESSION", "로그인 실패", exception);
-            }
-        });
-    }
-
     //카카오 서버와 통신이 됬다면 로그인 실행 후 카카오토큰 발급
     @Override
     public void startLogin() {

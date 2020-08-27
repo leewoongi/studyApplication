@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     private ImageButton loginButton;
 
     //카카오서버와 테스트
-
     private ISessionCallback callback = new ISessionCallback() {
         @Override
         public void onSessionOpened() {
@@ -45,9 +44,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         initialized();
 
         presenter = new LoginPresenter(LoginActivity.this);
-//        ISessionCallback callback = ((LoginPresenter) presenter).getSessionCallback();
-        Log.d("KAKAO", "add callback");
-        Session.getCurrentSession().addCallback(callback);
         loginButton.setOnClickListener(this);
     }
 
@@ -58,8 +54,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     @Override
     public void onClick(View v) {
         //카카오서버와 연결이 되는지 확인
-        presenter.checkLogin();
-        Session.getCurrentSession().open(AuthType.KAKAO_LOGIN_ALL, LoginActivity.this);
+        Session.getCurrentSession().addCallback(callback);
         presenter.startLogin();
     }
 

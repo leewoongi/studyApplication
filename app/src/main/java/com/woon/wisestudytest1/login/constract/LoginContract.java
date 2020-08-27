@@ -9,7 +9,7 @@ public interface LoginContract {
     }
 
     interface presenter{
-        void checkLogin();
+
         void onDestroy();
         void startLogin();
     }

@@ -1,7 +1,5 @@
 package com.woon.wisestudytest1.login.entity;
 
-import com.woon.wisestudytest1.util.ApiResponse;
-
 public class LoginVo {
     private String jwt;
 

@@ -6,10 +6,9 @@ import android.util.Log;
 
 import com.woon.wisestudytest1.login.constract.LoginContract;
 import com.woon.wisestudytest1.login.entity.LoginVo;
-import com.woon.wisestudytest1.login.entity.responseDto.LoginResponseDto;
 import com.woon.wisestudytest1.login.networking.LoginApi;
 import com.woon.wisestudytest1.network.ApiClient;
-import com.woon.wisestudytest1.util.ApiResponse;
+import com.woon.wisestudytest1.network.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +38,7 @@ public class RemoteLoginModel implements LoginContract.remoteModel {
 
                 Log.d("LoginSuccess","Success to register");
                 rmJwt = response.body().getMessage().getJwt();
-                System.out.println("=====>" + rmJwt);
+                System.out.println("=====>JWT : " + rmJwt);
 
             }
             @Override

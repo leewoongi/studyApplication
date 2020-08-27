@@ -2,8 +2,7 @@ package com.woon.wisestudytest1.login.networking;
 
 
 import com.woon.wisestudytest1.login.entity.LoginVo;
-import com.woon.wisestudytest1.login.entity.responseDto.LoginResponseDto;
-import com.woon.wisestudytest1.util.ApiResponse;
+import com.woon.wisestudytest1.network.ApiResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
