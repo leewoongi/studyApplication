@@ -16,7 +16,14 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+}
+
+subprojects {
+    repositories {
+        google()
         maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+        jcenter()
     }
 }
 

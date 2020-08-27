@@ -2,10 +2,10 @@ package com.woon.wisestudytest1.login.entity;
 
 import com.woon.wisestudytest1.util.ApiResponse;
 
-public class LoginResponse  {
+public class LoginVo {
     private String jwt;
 
-    public LoginResponse(String jwt) {
+    public LoginVo(String jwt) {
         this.jwt = jwt;
     }
 

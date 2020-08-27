@@ -10,6 +10,7 @@ public class ApiClient {
     private static Retrofit retrofit = null;
 
     //싱글톤을 만들기위해서 생성자는 private
+
     private ApiClient(){};
 
     // retrofit 객체가 없다면 새로 생성, 있다면 기존에 생성되어 있던 레트로핏 객체를 리턴

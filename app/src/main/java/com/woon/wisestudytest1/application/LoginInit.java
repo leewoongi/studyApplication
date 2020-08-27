@@ -23,7 +23,8 @@ public class LoginInit extends Application {
                 return new IApplicationConfig() {
                     @Override
                     public Context getApplicationContext() {
-                        return LoginInit.this;
+                        System.out.println("test");
+                        return LoginInit.this.getApplicationContext();
                     }
                 };
             }

@@ -2,8 +2,6 @@ package com.woon.wisestudytest1.login.constract;
 
 import android.content.Context;
 
-import com.kakao.auth.ISessionCallback;
-
 public interface LoginContract {
 
     interface view{
@@ -11,8 +9,9 @@ public interface LoginContract {
     }
 
     interface presenter{
-        ISessionCallback checkLogin();
+        void checkLogin();
         void onDestroy();
+        void startLogin();
     }
 
     interface remoteModel {
