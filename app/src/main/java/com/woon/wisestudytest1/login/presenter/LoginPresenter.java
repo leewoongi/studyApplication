@@ -20,11 +20,8 @@ public class LoginPresenter implements LoginContract.presenter {
     private LoginContract.remoteModel remoteModel;
     private LoginContract.localModel localModel;
 
-
-
-    //로그인 확인
+    // 카카오 토큰 및 jwt 키
     private String accessToken;
-    //jwt 키 값
     private String pJwt = "";
 
     public LoginPresenter(LoginContract.view view) {
@@ -68,8 +65,8 @@ public class LoginPresenter implements LoginContract.presenter {
 
 
     @Override
-    public void onDestroy() {
+    public void onDestroy(ISessionCallback callback) {
         view = null;
-
+        Session.getCurrentSession().removeCallback(callback);
     }
 }

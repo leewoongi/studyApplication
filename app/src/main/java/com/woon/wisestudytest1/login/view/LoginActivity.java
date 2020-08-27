@@ -20,10 +20,8 @@ import com.woon.wisestudytest1.user.UserActivity;
 import com.woon.wisestudytest1.util.TokenManager;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.view, View.OnClickListener {
-    private LoginContract.presenter presenter;
-    private ImageButton loginButton;
 
-    //카카오서버와 테스트
+    private LoginContract.presenter presenter;
     private ISessionCallback callback = new ISessionCallback() {
         @Override
         public void onSessionOpened() {
@@ -41,14 +39,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        initialized();
-
         presenter = new LoginPresenter(LoginActivity.this);
-        loginButton.setOnClickListener(this);
-    }
-
-    private void initialized() {
-        loginButton = findViewById(R.id.loginButton);
+        findViewById(R.id.loginButton).setOnClickListener(this);
     }
 
     @Override
@@ -68,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy();
+        presenter.onDestroy(callback);
     }
 
 }

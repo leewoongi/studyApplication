@@ -2,6 +2,8 @@ package com.woon.wisestudytest1.login.constract;
 
 import android.content.Context;
 
+import com.kakao.auth.ISessionCallback;
+
 public interface LoginContract {
 
     interface view{
@@ -10,7 +12,7 @@ public interface LoginContract {
 
     interface presenter{
 
-        void onDestroy();
+        void onDestroy(ISessionCallback callback);
         void startLogin();
     }
 
