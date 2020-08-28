@@ -1,4 +1,4 @@
-package com.woon.wisestudytest1.user;
+package com.woon.wisestudytest1.user.user.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 

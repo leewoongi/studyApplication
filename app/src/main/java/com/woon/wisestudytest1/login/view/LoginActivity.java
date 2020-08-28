@@ -5,26 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
 import com.woon.wisestudytest1.R;
-import com.woon.wisestudytest1.login.constract.LoginContract;
+import com.woon.wisestudytest1.login.contract.LoginContract;
 import com.woon.wisestudytest1.login.presenter.LoginPresenter;
-import com.woon.wisestudytest1.user.UserActivity;
-import com.woon.wisestudytest1.util.TokenManager;
+import com.woon.wisestudytest1.user.modifyuser.view.ModifyUserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
+
+import static com.kakao.auth.AuthType.*;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.view, View.OnClickListener {
 
-    private Context mContext;
     private LoginContract.presenter presenter;
+    private Context mContext;
+
     private ISessionCallback callback = new ISessionCallback() {
         @Override
         public void onSessionOpened() {
@@ -62,8 +62,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
         switch (id){
             case R.id.loginButton:
-                //카카오서버와 연결이 되는지 확인
+                //카카오서버와 연결이 되는지 확인j
                 Session.getCurrentSession().addCallback(callback);
+                Session.getCurrentSession().open(KAKAO_LOGIN_ALL, this);
                 presenter.startLogin(mContext);
                 break;
 
@@ -76,16 +77,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
                 presenter.deleteJwt(mContext);
                 break;
         }
-
-
     }
 
     @Override
     public void loginSuccess() {
-        Intent intent = new Intent(this, UserActivity.class);
+        Intent intent = new Intent(this, ModifyUserActivity.class);
         startActivity(intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     protected void onDestroy() {

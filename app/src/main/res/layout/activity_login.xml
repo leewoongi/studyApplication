@@ -5,9 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/firstTitle"
@@ -35,8 +33,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstTitle"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/firstTitle">
 
     </com.google.android.material.textview.MaterialTextView>
 

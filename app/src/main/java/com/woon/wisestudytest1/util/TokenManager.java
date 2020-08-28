@@ -18,7 +18,7 @@ public class TokenManager {
      * @param context
      * @param userToken
      */
-    public static void setJwtPreferences(Context context, String userToken){
+    public static void save(Context context, String userToken){
         SharedPreferences prefs = getPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(ACCESS_TOKEN, userToken);
@@ -31,7 +31,7 @@ public class TokenManager {
      * @param context
      * @return
      */
-    public static String getJwtPreferences(Context context){
+    public static String read(Context context){
         SharedPreferences prefs = getPreferences(context);
         return prefs.getString(ACCESS_TOKEN, DEFAULT_TOKEN);
 
@@ -41,7 +41,7 @@ public class TokenManager {
      * 토큰 삭제하기
      * @param context
      */
-    public static void removeJwtPreferences(Context context) {
+    public static void remove(Context context) {
         SharedPreferences prefs = getPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         editor.remove(ACCESS_TOKEN);

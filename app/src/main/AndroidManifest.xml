@@ -15,19 +15,19 @@
         android:usesCleartextTraffic="true"
         android:name=".application.LoginInit">
 
-        <activity android:name=".login.view.LoginActivity">
+        <activity android:name=".landing.view.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".user.UserActivity"/>
+        <activity android:name=".login.view.LoginActivity"/>
+        <activity android:name=".user.user.view.UserActivity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="da6534d56d532680d48e8d7059154024" />
+            android:value="da6534d56d532680d48e8d7059154024"/>
     </application>
 
 </manifest>

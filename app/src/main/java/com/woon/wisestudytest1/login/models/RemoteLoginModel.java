@@ -4,7 +4,7 @@ package com.woon.wisestudytest1.login.models;
 
 import android.util.Log;
 
-import com.woon.wisestudytest1.login.constract.LoginContract;
+import com.woon.wisestudytest1.login.contract.LoginContract;
 import com.woon.wisestudytest1.login.entity.LoginVo;
 import com.woon.wisestudytest1.login.networking.LoginApi;
 import com.woon.wisestudytest1.network.ApiClient;

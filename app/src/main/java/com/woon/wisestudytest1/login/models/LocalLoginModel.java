@@ -2,7 +2,7 @@ package com.woon.wisestudytest1.login.models;
 
 import android.content.Context;
 
-import com.woon.wisestudytest1.login.constract.LoginContract;
+import com.woon.wisestudytest1.login.contract.LoginContract;
 import com.woon.wisestudytest1.util.TokenManager;
 
 public class LocalLoginModel implements LoginContract.localModel {
@@ -13,16 +13,16 @@ public class LocalLoginModel implements LoginContract.localModel {
 
     @Override
     public void setJwtSharedPreference(Context context, String userKey) {
-        TokenManager.setJwtPreferences(context, userKey);
+        TokenManager.save(context, userKey);
     }
 
     @Override
     public String getJwtSharedPreference(Context context) {
-        return TokenManager.getJwtPreferences(context);
+        return TokenManager.read(context);
     }
 
     @Override
     public void deleteJwtSharedPreference(Context context) {
-        TokenManager.removeJwtPreferences(context);
+        TokenManager.remove(context);
     }
 }

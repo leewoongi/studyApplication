@@ -9,8 +9,7 @@ import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.auth.network.response.AccessTokenInfoResponse;
 import com.kakao.network.ErrorResult;
-import com.kakao.util.exception.KakaoException;
-import com.woon.wisestudytest1.login.constract.LoginContract;
+import com.woon.wisestudytest1.login.contract.LoginContract;
 import com.woon.wisestudytest1.login.models.LocalLoginModel;
 import com.woon.wisestudytest1.login.models.RemoteLoginModel;
 
@@ -32,7 +31,7 @@ public class LoginPresenter implements LoginContract.presenter {
 
     //카카오 서버와 통신이 됬다면 로그인 실행 후 카카오토큰 발급
     @Override
-    public void startLogin(Context context) {
+    public void startLogin(final Context mContext) {
         AuthService.getInstance()
                 .requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
                     @Override
@@ -56,8 +55,8 @@ public class LoginPresenter implements LoginContract.presenter {
 
                         if(pJwt != null){
                             // jwt 값 sharedPre에 저장
-                            localModel.setJwtSharedPreference(context, pJwt);
-                            //view.loginSuccess();
+                            localModel.setJwtSharedPreference(mContext, pJwt);
+                            view.loginSuccess();
                         }
                     }
                 });
