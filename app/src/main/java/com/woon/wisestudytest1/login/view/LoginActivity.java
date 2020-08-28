@@ -1,5 +1,6 @@
 package com.woon.wisestudytest1.login.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +19,11 @@ import com.woon.wisestudytest1.login.constract.LoginContract;
 import com.woon.wisestudytest1.login.presenter.LoginPresenter;
 import com.woon.wisestudytest1.user.UserActivity;
 import com.woon.wisestudytest1.util.TokenManager;
+import com.woon.wisestudytest1.util.UiHelper;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.view, View.OnClickListener {
 
+    private Context mContext;
     private LoginContract.presenter presenter;
     private ISessionCallback callback = new ISessionCallback() {
         @Override
@@ -39,15 +42,42 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        initialized();
         presenter = new LoginPresenter(LoginActivity.this);
+
         findViewById(R.id.loginButton).setOnClickListener(this);
+        findViewById(R.id.getJwtToken).setOnClickListener(this);
+        findViewById(R.id.deleteJwtToken).setOnClickListener(this);
+    }
+
+    private void initialized() {
+        UiHelper.hideWindow(this);
+        mContext = this;
     }
 
     @Override
     public void onClick(View v) {
-        //카카오서버와 연결이 되는지 확인
-        Session.getCurrentSession().addCallback(callback);
-        presenter.startLogin();
+
+        int id = v.getId();
+
+        switch (id){
+            case R.id.loginButton:
+                //카카오서버와 연결이 되는지 확인
+                Session.getCurrentSession().addCallback(callback);
+                presenter.startLogin(mContext);
+                break;
+
+            case R.id.getJwtToken:
+                //jwt가 잘 들어갔는지 확인하기 위한 테스트 용도
+                presenter.getJwt(mContext);
+                break;
+
+            case R.id.deleteJwtToken:
+                presenter.deleteJwt(mContext);
+                break;
+        }
+
+
     }
 
     @Override

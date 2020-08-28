@@ -13,7 +13,9 @@ public interface LoginContract {
     interface presenter{
 
         void onDestroy(ISessionCallback callback);
-        void startLogin();
+        void startLogin(Context context);
+        void getJwt(Context context);
+        void deleteJwt(Context context);
     }
 
     interface remoteModel {
@@ -23,8 +25,8 @@ public interface LoginContract {
     interface localModel{
         //userKey = jwt
         void setJwtSharedPreference(Context context, String userKey);
-        void getJwtSharedPreference(Context context, String userKey);
-        void deleteJwtSharedPreference(Context context, String userKey);
+        String getJwtSharedPreference(Context context);
+        void deleteJwtSharedPreference(Context context);
 
     }
 

@@ -13,16 +13,16 @@ public class LocalLoginModel implements LoginContract.localModel {
 
     @Override
     public void setJwtSharedPreference(Context context, String userKey) {
-        TokenManager.setPreferences(context, userKey);
+        TokenManager.setJwtPreferences(context, userKey);
     }
 
     @Override
-    public void getJwtSharedPreference(Context context, String userKey) {
-
+    public String getJwtSharedPreference(Context context) {
+        return TokenManager.getJwtPreferences(context);
     }
 
     @Override
-    public void deleteJwtSharedPreference(Context context, String userKey) {
-
+    public void deleteJwtSharedPreference(Context context) {
+        TokenManager.removeJwtPreferences(context);
     }
 }

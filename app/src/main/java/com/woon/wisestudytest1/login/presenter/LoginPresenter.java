@@ -32,7 +32,7 @@ public class LoginPresenter implements LoginContract.presenter {
 
     //카카오 서버와 통신이 됬다면 로그인 실행 후 카카오토큰 발급
     @Override
-    public void startLogin() {
+    public void startLogin(Context context) {
         AuthService.getInstance()
                 .requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
                     @Override
@@ -56,11 +56,24 @@ public class LoginPresenter implements LoginContract.presenter {
 
                         if(pJwt != null){
                             // jwt 값 sharedPre에 저장
-                            localModel.setJwtSharedPreference((Context) view, pJwt);
-                            view.loginSuccess();
+                            localModel.setJwtSharedPreference(context, pJwt);
+                            //view.loginSuccess();
                         }
                     }
                 });
+    }
+
+
+    // jwt 키값의 유무로 이동 페이지가 달라지기 때문에 테스트 용도로 만듬
+    @Override
+    public void getJwt(Context context) {
+        String value = localModel.getJwtSharedPreference(context);
+        Log.d("JWT" , value);
+    }
+
+    @Override
+    public void deleteJwt(Context context) {
+        localModel.deleteJwtSharedPreference(context);
     }
 
 
