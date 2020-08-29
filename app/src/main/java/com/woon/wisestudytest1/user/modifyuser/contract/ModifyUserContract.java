@@ -1,16 +1,21 @@
 package com.woon.wisestudytest1.user.modifyuser.contract;
 
+import android.content.Context;
+
 public interface ModifyUserContract {
     interface view{
-        void showPicture();
+        void showInformation();
+        void showImage();
     }
 
     interface presenter{
-        void requestModifyUser();
+        String getJwt(Context context);
+        void changeImage();
+        void requestModifyUser(String userKey);
     }
 
     interface remoteModel{
-        void putUserInformation();
+        void putUserInformation(String userKey);
     }
 
     interface localModel{

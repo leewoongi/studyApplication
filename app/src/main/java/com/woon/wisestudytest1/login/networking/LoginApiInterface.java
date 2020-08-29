@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 
 
-public interface LoginApi {
+public interface LoginApiInterface {
 
     @GET("/api/v1/oauth/token")
     Call<ApiResponse<LoginVo>> getJwtToken(@Header("kakao-access-token") String accessToken);

@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.woon.wisestudytest1.login.contract.LoginContract;
 import com.woon.wisestudytest1.login.entity.LoginVo;
-import com.woon.wisestudytest1.login.networking.LoginApi;
+import com.woon.wisestudytest1.login.networking.LoginApiInterface;
 import com.woon.wisestudytest1.network.ApiClient;
 import com.woon.wisestudytest1.network.ApiResponse;
 
@@ -26,8 +26,8 @@ public class RemoteLoginModel implements LoginContract.remoteModel {
     //로그인 통신
     @Override
     public String requestLogin(String accessToken) {
-        LoginApi loginApi = ApiClient.getInstance().create(LoginApi.class);
-        Call<ApiResponse<LoginVo>> call = loginApi.getJwtToken(accessToken);
+        LoginApiInterface loginApiInterface = ApiClient.getInstance().create(LoginApiInterface.class);
+        Call<ApiResponse<LoginVo>> call = loginApiInterface.getJwtToken(accessToken);
 
         call.enqueue(new Callback<ApiResponse<LoginVo>>() {
             @Override
