@@ -19,7 +19,7 @@ public interface LoginContract {
     }
 
     interface remoteModel {
-        String requestLogin(String accessToken);
+        void requestLogin(Context context, String accessToken);
     }
 
     interface localModel{

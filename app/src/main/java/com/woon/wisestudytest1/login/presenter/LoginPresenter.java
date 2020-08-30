@@ -31,7 +31,7 @@ public class LoginPresenter implements LoginContract.presenter {
 
     //카카오 서버와 통신이 됬다면 로그인 실행 후 카카오토큰 발급
     @Override
-    public void startLogin(final Context mContext) {
+    public void startLogin(Context mContext) {
         AuthService.getInstance()
                 .requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
                     @Override
@@ -51,13 +51,8 @@ public class LoginPresenter implements LoginContract.presenter {
                         accessToken = Session.getCurrentSession().getAccessToken();
 
                         //모델에서 실서버와 통신하기
-                        pJwt = remoteModel.requestLogin(accessToken);
-
-                        if(pJwt != null){
-                            // jwt 값 sharedPre에 저장
-                            localModel.setJwtSharedPreference(mContext, pJwt);
-                            view.loginSuccess();
-                        }
+                        remoteModel.requestLogin(mContext, accessToken);
+                        view.loginSuccess();
                     }
                 });
     }
