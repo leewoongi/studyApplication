@@ -10,7 +10,7 @@ public interface ModifyUserContract {
 
     interface presenter{
         String getJwt(Context context);
-        void changeImage();
+        String changeImage();
         void requestModifyUser(String userKey);
     }
 

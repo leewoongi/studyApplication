@@ -27,10 +27,9 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
     }
 
     @Override
-    public void changeImage() {
+    public String changeImage() {
 
-
-
+        return null;
     }
 
     @Override
