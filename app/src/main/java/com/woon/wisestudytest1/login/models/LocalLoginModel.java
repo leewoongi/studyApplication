@@ -7,13 +7,17 @@ import com.woon.wisestudytest1.util.TokenManager;
 
 public class LocalLoginModel implements LoginContract.localModel {
 
-    public LocalLoginModel() {
+    private LoginContract.presenter presenter;
+
+    public LocalLoginModel(LoginContract.presenter presenter) {
         //쉐어드 프리퍼런스 생성
+        this.presenter = presenter;
     }
 
     @Override
     public void setJwtSharedPreference(Context context, String userKey) {
         TokenManager.save(context, userKey);
+        presenter.checkJwt();
     }
 
     @Override

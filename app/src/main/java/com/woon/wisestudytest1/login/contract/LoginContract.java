@@ -14,12 +14,15 @@ public interface LoginContract {
 
         void onDestroy(ISessionCallback callback);
         void startLogin(Context context);
-        void getJwt(Context context);
+        String getJwt(Context context);
         void deleteJwt(Context context);
+        void setJwtOnSuccess(Context context, String userKey);
+        void checkJwt();
+
     }
 
     interface remoteModel {
-        void requestLogin(Context context, String accessToken);
+        void requestLogin(Context context);
     }
 
     interface localModel{

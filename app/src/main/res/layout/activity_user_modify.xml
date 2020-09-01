@@ -22,13 +22,13 @@
         android:layout_width="89dp"
         android:layout_height="89dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="161dp"
-        android:background="@drawable/kakao_default_profile_image"
+        android:src="@drawable/kakao_default_profile_image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userModifyToolbar"
-        tools:ignore="MissingClass">
+        app:layout_constraintTop_toBottomOf="@+id/userModifyToolbar">
 
     </de.hdodenhof.circleimageview.CircleImageView>
 

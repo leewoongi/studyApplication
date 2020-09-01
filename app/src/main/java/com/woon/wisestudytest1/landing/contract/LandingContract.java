@@ -7,16 +7,12 @@ import com.kakao.auth.ISessionCallback;
 public interface LandingContract {
 
     interface view {
-        void searchUserKey();
         void waitAnimateActivity();
+        void checkUserKey();
     }
 
     interface presenter{
-        String getJwt(Context context);
+        String searchUserKey(Context context);
         void onDestroy();
-    }
-
-    interface localModel{
-        String getJwtSharedPreference(Context context);
     }
 }

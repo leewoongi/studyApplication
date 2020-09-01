@@ -3,9 +3,12 @@ package com.woon.wisestudytest1.user.modifyuser.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     private TextInputEditText userModifyUserAge;
     private TextInputEditText userModifyUserPhone;
     private TextInputEditText userModifyUserDescription;
+    private ImageView userModifyImageView;
     private Context mContext;
 
     @Override
@@ -53,6 +57,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
         userModifyUserAge = findViewById(R.id.userModifyUserAge);
         userModifyUserPhone = findViewById(R.id.userModifyUserPhone);
         userModifyUserDescription = findViewById(R.id.userModifyUserDescription);
+        userModifyImageView = findViewById(R.id.userModifyImageView);
 
     }
 
@@ -63,8 +68,8 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     }
 
     @Override
-    public void showImage() {
-
+    public void showImage(Bitmap img) {
+        userModifyImageView.setImageBitmap(img);
     }
 
 
@@ -88,8 +93,9 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
         if(requestCode == SELECT_IMAGE){
             if(resultCode == Activity.RESULT_OK){
-                String imageUrl = presenter.changeImage();
+                presenter.changeImage(ModifyUserActivity.this, data);
             }
         }
     }
+
 }

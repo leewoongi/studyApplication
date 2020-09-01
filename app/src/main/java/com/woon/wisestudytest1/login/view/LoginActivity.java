@@ -18,14 +18,13 @@ import com.woon.wisestudytest1.login.presenter.LoginPresenter;
 import com.woon.wisestudytest1.user.modifyuser.view.ModifyUserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
-import static com.kakao.auth.AuthType.*;
-
 public class LoginActivity extends AppCompatActivity implements LoginContract.view, View.OnClickListener {
 
+    public static String userKey = "";
     private LoginContract.presenter presenter;
     private Context mContext;
 
-    private ISessionCallback callback = new ISessionCallback() {
+    private ISessionCallback sessionCallback  = new ISessionCallback() {
         @Override
         public void onSessionOpened() {
             Log.i("KAKAO_SESSION", "로그인 성공");
@@ -62,9 +61,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
         switch (id){
             case R.id.loginButton:
+
                 //카카오서버와 연결이 되는지 확인j
-                Session.getCurrentSession().addCallback(callback);
-                Session.getCurrentSession().open(KAKAO_LOGIN_ALL, this);
+                Session.getCurrentSession().addCallback(sessionCallback);
                 presenter.startLogin(mContext);
                 break;
 
@@ -81,22 +80,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void loginSuccess() {
+        userKey = presenter.getJwt(mContext);
         Intent intent = new Intent(this, ModifyUserActivity.class);
         startActivity(intent);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
-            return;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy(callback);
+        presenter.onDestroy(sessionCallback);
     }
 
 }

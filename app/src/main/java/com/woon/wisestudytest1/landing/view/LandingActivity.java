@@ -12,14 +12,13 @@ import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.landing.contract.LandingContract;
 import com.woon.wisestudytest1.landing.presenter.LandingPresenter;
 import com.woon.wisestudytest1.login.view.LoginActivity;
+import com.woon.wisestudytest1.user.user.view.UserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class LandingActivity extends AppCompatActivity implements LandingContract.view {
     private LandingContract.presenter presenter;
 
     private Context mContext;
-    private String userKey = "";
-
     private Handler waitActivity;
     private Runnable runnable;
 
@@ -31,7 +30,6 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
         initialized();
 
         presenter = new LandingPresenter(LandingActivity.this);
-        searchUserKey();
         waitAnimateActivity();
 
     }
@@ -42,8 +40,15 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
     }
 
     @Override
-    public void searchUserKey() {
-        userKey = presenter.getJwt(mContext);
+    public void checkUserKey() {
+        Intent intent;
+        if(presenter.searchUserKey(mContext) == null){
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
+        }else{
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
+            //intent = new Intent(getApplicationContext(), UserActivity.class);
+        }
+        startActivity(intent);
     }
 
     @Override
@@ -52,14 +57,7 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
         runnable = new Runnable() {
             @Override
             public void run() {
-                Intent intent;
-                if(userKey == "NO"){
-                    intent = new Intent(getApplicationContext(), LoginActivity.class);
-                }else{
-                    intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    //intent = new Intent(getApplicationContext(), UserActivity.class);
-                }
-                startActivity(intent);
+                checkUserKey();
             }
         };
     }

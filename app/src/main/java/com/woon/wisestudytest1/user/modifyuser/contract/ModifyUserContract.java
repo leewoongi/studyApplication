@@ -1,16 +1,19 @@
 package com.woon.wisestudytest1.user.modifyuser.contract;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 
 public interface ModifyUserContract {
     interface view{
         void showInformation();
-        void showImage();
+        void showImage(Bitmap img);
     }
 
     interface presenter{
         String getJwt(Context context);
-        String changeImage();
+        void changeImage(Activity activity, Intent intent);
         void requestModifyUser(String userKey);
     }
 
