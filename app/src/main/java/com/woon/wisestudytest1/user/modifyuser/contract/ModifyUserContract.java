@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 public interface ModifyUserContract {
     interface view{
@@ -18,6 +19,7 @@ public interface ModifyUserContract {
     }
 
     interface remoteModel{
+        void uploadImage(Activity activity, Uri uri);
         void putUserInformation(String userKey);
     }
 

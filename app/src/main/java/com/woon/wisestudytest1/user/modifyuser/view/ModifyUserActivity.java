@@ -7,9 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +25,7 @@ import com.woon.wisestudytest1.util.UiHelper;
 public class ModifyUserActivity extends AppCompatActivity implements ModifyUserContract.view, View.OnClickListener {
 
     private ModifyUserContract.presenter presenter;
-    private final static int SELECT_IMAGE = 100;
+    private final static int SELECT_IMAGE = 1;
     private String userKey = "";
 
     //개인정보
@@ -31,7 +34,11 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     private TextInputEditText userModifyUserPhone;
     private TextInputEditText userModifyUserDescription;
     private ImageView userModifyImageView;
+
     private Context mContext;
+    private Activity activity = this;
+    private Menu menu;
+    private MenuItem menuItem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +58,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     private void initialized() {
         UiHelper.toolBarInitialize(this, findViewById(R.id.userModifyToolbar));
         UiHelper.hideWindow(this);
+        UiHelper.topMenuInflate(activity, getResources().getResourceName(R.menu.push_save), menu);
 
         mContext = this;
         userModifyUserName = findViewById(R.id.userModifyUserName);
@@ -98,4 +106,13 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
         }
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.ok){
+            // 개인정보 put
+            
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

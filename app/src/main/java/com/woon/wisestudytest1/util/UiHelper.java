@@ -1,5 +1,9 @@
 package com.woon.wisestudytest1.util;
 
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -30,4 +34,17 @@ public class UiHelper {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
+    /**
+     * 앱바 우측 상단 버튼
+     * @param activity
+     * @param id
+     * @param menu
+     * @return
+     */
+    public static boolean topMenuInflate(Activity activity, String id, Menu menu){
+        MenuInflater menuInflater = activity.getMenuInflater();
+        menuInflater.inflate(Integer.parseInt(id),menu);
+
+        return true;
+    }
 }

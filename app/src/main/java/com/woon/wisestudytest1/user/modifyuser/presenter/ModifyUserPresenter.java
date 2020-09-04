@@ -5,12 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
-import com.woon.wisestudytest1.user.modifyuser.model.LocalModifyUserModel;
 import com.woon.wisestudytest1.user.modifyuser.model.RemoteModifyUserModel;
 import com.woon.wisestudytest1.util.TokenManager;
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +23,7 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
 
     public ModifyUserPresenter(ModifyUserContract.view view) {
         this.view = view;
-        remoteModel = new RemoteModifyUserModel();
+        remoteModel = new RemoteModifyUserModel(this);
     }
 
     @Override
@@ -41,6 +40,10 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
             InputStream in = activity.getContentResolver().openInputStream(data.getData());
             Bitmap img = BitmapFactory.decodeStream(in);
             in.close();
+
+            Uri selectImage = data.getData();
+            System.out.println("!!!! Uri : " + selectImage );
+            //remoteModel.uploadImage(activity, selectImage);
             view.showImage(img);
 
         } catch (IOException e) {
