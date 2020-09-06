@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kakao.auth.AuthType;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
             case R.id.loginButton:
 
                 //카카오서버와 연결이 되는지 확인j
+                Session.getCurrentSession().open(AuthType.KAKAO_LOGIN_ALL,LoginActivity.this);
                 Session.getCurrentSession().addCallback(sessionCallback);
                 presenter.startLogin(mContext);
                 break;
@@ -83,6 +85,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         userKey = presenter.getJwt(mContext);
         Intent intent = new Intent(this, ModifyUserActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        // 카카오톡|스토리 간편로그인 실행 결과를 받아서 SDK로 전달
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
