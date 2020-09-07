@@ -12,7 +12,7 @@ public interface UserApiInterface {
 
     @PUT("/api/v1/users")
     Call<ApiResponse<UserVo>> modifyUserInformation(@Header(" x-jwt-token") String id,
-                                                   @Body UserVo userVo);
+                                                    @Body UserVo userVo);
 
 
 }

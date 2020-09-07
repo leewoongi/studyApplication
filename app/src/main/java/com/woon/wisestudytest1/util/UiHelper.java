@@ -34,17 +34,4 @@ public class UiHelper {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    /**
-     * 앱바 우측 상단 버튼
-     * @param activity
-     * @param id
-     * @param menu
-     * @return
-     */
-    public static boolean topMenuInflate(Activity activity, String id, Menu menu){
-        MenuInflater menuInflater = activity.getMenuInflater();
-        menuInflater.inflate(Integer.parseInt(id),menu);
-
-        return true;
-    }
 }

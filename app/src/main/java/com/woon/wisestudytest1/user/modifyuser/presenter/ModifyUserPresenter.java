@@ -1,23 +1,17 @@
 package com.woon.wisestudytest1.user.modifyuser.presenter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 
+import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.model.RemoteModifyUserModel;
 import com.woon.wisestudytest1.util.TokenManager;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class ModifyUserPresenter implements ModifyUserContract.presenter {
 
     private ModifyUserContract.view view;
     private ModifyUserContract.remoteModel remoteModel;
+    private ModifyUserContract.localModel localModel;
 
     private String userKey;
 
@@ -32,28 +26,19 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
         return userKey;
     }
 
+
     @Override
-    public void changeImage(Activity activity, Intent data) {
+    public void updateUserInformation(String userKey) {
+        remoteModel.getUserInformation(userKey);
+    }
 
-        try {
-
-            InputStream in = activity.getContentResolver().openInputStream(data.getData());
-            Bitmap img = BitmapFactory.decodeStream(in);
-            in.close();
-
-            Uri selectImage = data.getData();
-            System.out.println("!!!! Uri : " + selectImage );
-            //remoteModel.uploadImage(activity, selectImage);
-            view.showImage(img);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void responseUserInformation(UserVo item) {
+        view.showInformation(item);
     }
 
     @Override
     public void requestModifyUser(String key) {
         remoteModel.putUserInformation(key);
-        view.showInformation();
     }
 }

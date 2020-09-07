@@ -1,25 +1,25 @@
 package com.woon.wisestudytest1.user.modifyuser.contract;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
+
+import com.woon.wisestudytest1.user.Entity.UserVo;
 
 public interface ModifyUserContract {
     interface view{
-        void showInformation();
-        void showImage(Bitmap img);
+        void showInformation(UserVo item);
     }
 
     interface presenter{
         String getJwt(Context context);
-        void changeImage(Activity activity, Intent intent);
+        void updateUserInformation(String userKey);
+        void responseUserInformation(UserVo userVo);
+
         void requestModifyUser(String userKey);
     }
 
     interface remoteModel{
-        void uploadImage(Activity activity, Uri uri);
+
+        void getUserInformation(String userKey);
         void putUserInformation(String userKey);
     }
 
