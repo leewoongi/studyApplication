@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,9 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
     private ModifyUserContract.presenter presenter;
     private final static int SELECT_IMAGE = 1;
+    private Uri UserImageUri;
     private Uri uri;
+    private UserVo userVo;
     private String userKey = "";
 
     //개인정보
@@ -47,7 +50,8 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
         presenter = new ModifyUserPresenter(ModifyUserActivity.this);
         userKey = presenter.getJwt(mContext);
-        presenter.updateUserInformation(userKey);
+        // 유저정보 받아오기
+        presenter.bringUserInformation(userKey);
 
         //이미지 뷰 클릭
         findViewById(R.id.userModifyImageView).setOnClickListener(this);
@@ -69,14 +73,14 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
     @Override
     public void showInformation(UserVo item) {
-
+        userVo = item;
         if(item.isImg_flag() == false){
-            uri = Uri.parse(item.getKakao_profile_img());
+            UserImageUri = Uri.parse(item.getKakao_profile_img());
         }else{
-            uri = Uri.parse(item.getS3_profile_img());
+            UserImageUri = Uri.parse(item.getS3_profile_img());
         }
 
-        Glide.with(this).load(uri).into(userModifyImageView);
+        Glide.with(this).load(UserImageUri).into(userModifyImageView);
         if (item.getAge() != null) {
             userModifyUserName.setText(item.getName());
             userModifyUserAge.setText((item.getAge()).toString());
@@ -100,7 +104,8 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        Glide.with(this).load(data.getData()).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(userModifyImageView);
+        UserImageUri = data.getData();
+        Glide.with(this).load(UserImageUri).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(userModifyImageView);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -113,10 +118,42 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.ok){
-            // 개인정보 put
-
-
+            UserVo userInformation = getUser();
+            if(userInformation == null){
+                Toast.makeText(getApplicationContext(), "모두 입력해주세요", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                // 개인정보 put
+                presenter.upLoadImage(this, UserImageUri);
+                presenter.updateUserInformation(userKey, userInformation);
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private UserVo getUser() {
+
+        int userId = userVo.getUser_id();
+        String userEmail = userVo.getEmail();
+        String userName = userModifyUserName.getText().toString();
+        String userAge = userModifyUserAge.getText().toString();
+        String userPhone = userModifyUserPhone.getText().toString();
+        String gender = userVo.getGender();
+        String userDescription = userModifyUserDescription.getText().toString();
+        String userCategories = userVo.getCategories();
+        String userKaKaoImg = userVo.getKakao_profile_img();
+        String userS3Img = userVo.getS3_profile_img();
+        boolean userImgFlag = userVo.isImg_flag();
+
+        if(userName.getBytes().length <= 0 && userAge.toString().getBytes().length <= 0
+                && userPhone.getBytes().length <= 0 && userDescription.getBytes().length <= 0) {
+            return null;
+        }
+        else{
+            UserVo user = new UserVo(userId, userEmail, userName, Integer.parseInt(userAge),
+                    userPhone, gender, userDescription, userCategories,
+                    userKaKaoImg, userS3Img, userImgFlag);
+            return user;
+        }
     }
 }

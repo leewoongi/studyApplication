@@ -49,7 +49,22 @@ public class RemoteModifyUserModel implements ModifyUserContract.remoteModel {
     }
 
     @Override
-    public void putUserInformation(String userKey) {
+    public void patchUserInformation(String userKey, UserVo userVo) {
+        UserModifyInterface userModifyInterface = ApiClient.getInstance().create(UserModifyInterface.class);
+        Call<ApiResponse<UserVo>> call = userModifyInterface.updateUser(userKey, userVo);
 
+        call.enqueue(new Callback<ApiResponse<UserVo>>() {
+            @Override
+            public void onResponse(Call<ApiResponse<UserVo>> call, Response<ApiResponse<UserVo>> response) {
+                UserVo item  = response.body().getMessage();
+                presenter.responseUserInformation(item);
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse<UserVo>> call, Throwable t) {
+                Log.d("UserFailure", t.getMessage());
+            }
+        });
     }
+
 }

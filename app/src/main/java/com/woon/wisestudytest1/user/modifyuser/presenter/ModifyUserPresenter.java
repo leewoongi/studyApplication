@@ -1,9 +1,12 @@
 package com.woon.wisestudytest1.user.modifyuser.presenter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
+import com.woon.wisestudytest1.user.modifyuser.model.LocalModifyUserModel;
 import com.woon.wisestudytest1.user.modifyuser.model.RemoteModifyUserModel;
 import com.woon.wisestudytest1.util.TokenManager;
 
@@ -18,6 +21,7 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
     public ModifyUserPresenter(ModifyUserContract.view view) {
         this.view = view;
         remoteModel = new RemoteModifyUserModel(this);
+        localModel = new LocalModifyUserModel(this);
     }
 
     @Override
@@ -26,9 +30,13 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
         return userKey;
     }
 
+    @Override
+    public void upLoadImage(Activity activity, Uri uri) {
+        localModel.postPicture(activity, uri);
+    }
 
     @Override
-    public void updateUserInformation(String userKey) {
+    public void bringUserInformation(String userKey) {
         remoteModel.getUserInformation(userKey);
     }
 
@@ -38,7 +46,7 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
     }
 
     @Override
-    public void requestModifyUser(String key) {
-        remoteModel.putUserInformation(key);
+    public void updateUserInformation(String userKey, UserVo userVo) {
+        remoteModel.patchUserInformation(userKey, userVo);
     }
 }
