@@ -28,7 +28,6 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     private ModifyUserContract.presenter presenter;
     private final static int SELECT_IMAGE = 1;
     private Uri UserImageUri;
-    private Uri uri;
     private UserVo userVo;
     private String userKey = "";
 
@@ -106,6 +105,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         UserImageUri = data.getData();
         Glide.with(this).load(UserImageUri).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(userModifyImageView);
+        presenter.upLoadImage(ModifyUserActivity.this, UserImageUri);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -124,7 +124,6 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
             }
             else{
                 // 개인정보 put
-                presenter.upLoadImage(this, UserImageUri);
                 presenter.updateUserInformation(userKey, userInformation);
             }
         }
@@ -145,7 +144,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
         String userS3Img = userVo.getS3_profile_img();
         boolean userImgFlag = userVo.isImg_flag();
 
-        if(userName.getBytes().length <= 0 && userAge.toString().getBytes().length <= 0
+        if(userName.getBytes().length <= 0 && userAge.getBytes().length <= 0
                 && userPhone.getBytes().length <= 0 && userDescription.getBytes().length <= 0) {
             return null;
         }
