@@ -27,6 +27,11 @@ public class UserActivity extends AppCompatActivity implements UserContract.view
     }
 
     @Override
+    public void addItems() {
+
+    }
+
+    @Override
     public void showInformation() {
 
     }
