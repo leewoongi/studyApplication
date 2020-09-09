@@ -1,6 +1,7 @@
 package com.woon.wisestudytest1.util;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class UiHelper {
-
 
     /**
      * 앱바를 사용하려면 activity 마다 같은 코드를 반복적으로 사용해야함

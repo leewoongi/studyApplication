@@ -13,15 +13,15 @@ import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.netwroking.UserModifyInterface;
-import com.woon.wisestudytest1.util.RemoteCallback;
+import com.woon.wisestudytest1.util.SuccessCallback;
 
 public class RemoteModifyUserModel implements ModifyUserContract.remoteModel {
     private ModifyUserContract.presenter presenter;
-    private RemoteCallback remoteCallback;
+    private SuccessCallback successCallback;
 
-    public RemoteModifyUserModel(ModifyUserContract.presenter presenter, RemoteCallback remoteCallback) {
+    public RemoteModifyUserModel(ModifyUserContract.presenter presenter, SuccessCallback successCallback) {
         this.presenter = presenter;
-        this.remoteCallback = remoteCallback;
+        this.successCallback = successCallback;
     }
 
     //화면 켜질시 데이터 가져옴
@@ -60,9 +60,11 @@ public class RemoteModifyUserModel implements ModifyUserContract.remoteModel {
         call.enqueue(new Callback<ApiResponse<UpdateUserVo>>() {
             @Override
             public void onResponse(Call<ApiResponse<UpdateUserVo>> call, Response<ApiResponse<UpdateUserVo>> response) {
-                //UserVo item  = response.body().getMessage();
-                //presenter.responseUserInformation(item);
-                remoteCallback.onSuccess();
+                if(response.isSuccessful() == false){
+                    Log.d("UserUpdate","Failed to UserUpdate");
+
+                }
+                successCallback.onSuccess();
             }
 
             @Override

@@ -2,6 +2,7 @@ package com.woon.wisestudytest1.user.user.contract;
 
 public interface UserContract {
     interface view{
+        void addItems();
         void showInformation();
         void showJoinedStudy();
         void showFavoriteField();

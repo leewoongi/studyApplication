@@ -9,10 +9,10 @@ import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.model.LocalModifyUserModel;
 import com.woon.wisestudytest1.user.modifyuser.model.RemoteModifyUserModel;
-import com.woon.wisestudytest1.util.RemoteCallback;
+import com.woon.wisestudytest1.util.SuccessCallback;
 import com.woon.wisestudytest1.util.TokenManager;
 
-public class ModifyUserPresenter implements ModifyUserContract.presenter, RemoteCallback {
+public class ModifyUserPresenter implements ModifyUserContract.presenter, SuccessCallback {
 
     private ModifyUserContract.view view;
     private ModifyUserContract.remoteModel remoteModel;

@@ -28,6 +28,7 @@
         <activity android:name=".login.view.LoginActivity"/>
         <activity android:name=".user.user.view.UserActivity"/>
         <activity android:name=".user.modifyuser.view.ModifyUserActivity"/>
+        <activity android:name=".user.createstudy.view.CreateStudyActivity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

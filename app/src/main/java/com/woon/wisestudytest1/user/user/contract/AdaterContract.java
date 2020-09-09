@@ -1,7 +1,12 @@
 package com.woon.wisestudytest1.user.user.contract;
 
 public interface AdaterContract {
-    interface view{}
-    interface remoteModel{}
+    interface view{
+        void notifyAdapter();
+    }
+    interface model{
+        void addItems();
+        void clearItems();
+    }
 
 }
