@@ -18,9 +18,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.textfield.TextInputEditText;
 import com.woon.wisestudytest1.R;
+import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.presenter.ModifyUserPresenter;
+import com.woon.wisestudytest1.user.user.view.UserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class ModifyUserActivity extends AppCompatActivity implements ModifyUserContract.view, View.OnClickListener {
@@ -28,7 +30,6 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     private ModifyUserContract.presenter presenter;
     private final static int SELECT_IMAGE = 1;
     private Uri UserImageUri;
-    private UserVo userVo;
     private String userKey = "";
 
     //개인정보
@@ -72,7 +73,6 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
     @Override
     public void showInformation(UserVo item) {
-        userVo = item;
         if(item.isImg_flag() == false){
             UserImageUri = Uri.parse(item.getKakao_profile_img());
         }else{
@@ -86,6 +86,12 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
             userModifyUserPhone.setText(item.getCellphone());
             userModifyUserDescription.setText(item.getDescription());
         }
+    }
+
+    @Override
+    public void nextActivity() {
+        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -105,7 +111,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         UserImageUri = data.getData();
         Glide.with(this).load(UserImageUri).diskCacheStrategy(DiskCacheStrategy.RESOURCE).into(userModifyImageView);
-        presenter.upLoadImage(ModifyUserActivity.this, UserImageUri);
+        presenter.upLoadImage(ModifyUserActivity.this, userKey, UserImageUri);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -118,7 +124,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.ok){
-            UserVo userInformation = getUser();
+            UpdateUserVo userInformation = getUser();
             if(userInformation == null){
                 Toast.makeText(getApplicationContext(), "모두 입력해주세요", Toast.LENGTH_SHORT).show();
             }
@@ -130,28 +136,20 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
         return super.onOptionsItemSelected(item);
     }
 
-    private UserVo getUser() {
+    private UpdateUserVo getUser() {
 
-        int userId = userVo.getUser_id();
-        String userEmail = userVo.getEmail();
         String userName = userModifyUserName.getText().toString();
         String userAge = userModifyUserAge.getText().toString();
         String userPhone = userModifyUserPhone.getText().toString();
-        String gender = userVo.getGender();
         String userDescription = userModifyUserDescription.getText().toString();
-        String userCategories = userVo.getCategories();
-        String userKaKaoImg = userVo.getKakao_profile_img();
-        String userS3Img = userVo.getS3_profile_img();
-        boolean userImgFlag = userVo.isImg_flag();
 
-        if(userName.getBytes().length <= 0 && userAge.getBytes().length <= 0
-                && userPhone.getBytes().length <= 0 && userDescription.getBytes().length <= 0) {
+        if(userName.getBytes().length <= 0 || userAge.getBytes().length <= 0
+                || userPhone.getBytes().length <= 0 || userDescription.getBytes().length <= 0) {
             return null;
         }
         else{
-            UserVo user = new UserVo(userId, userEmail, userName, Integer.parseInt(userAge),
-                    userPhone, gender, userDescription, userCategories,
-                    userKaKaoImg, userS3Img, userImgFlag);
+            UpdateUserVo user = new UpdateUserVo(userName, Integer.parseInt(userAge),
+                    userPhone, userDescription);
             return user;
         }
     }

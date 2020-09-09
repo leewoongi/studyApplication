@@ -1,5 +1,7 @@
 package com.woon.wisestudytest1.user.Entity;
 
+import java.util.List;
+
 public class UserVo {
     private Integer user_id;
     private String email;
@@ -12,8 +14,9 @@ public class UserVo {
     private String kakao_profile_img;
     private String s3_profile_img;
     private boolean img_flag;
+    private List<UserStudies> study_list;
 
-    public UserVo(Integer user_id, String email, String name, Integer age, String cellphone, String gender, String description, String categories, String kakao_profile_img, String s3_profile_img, boolean img_flag) {
+    public UserVo(Integer user_id, String email, String name, Integer age, String cellphone, String gender, String description, String categories, String kakao_profile_img, String s3_profile_img, boolean img_flag, List<UserStudies> study_list) {
         this.user_id = user_id;
         this.email = email;
         this.name = name;
@@ -25,6 +28,7 @@ public class UserVo {
         this.kakao_profile_img = kakao_profile_img;
         this.s3_profile_img = s3_profile_img;
         this.img_flag = img_flag;
+        this.study_list = study_list;
     }
 
     public Integer getUser_id() {
@@ -113,5 +117,13 @@ public class UserVo {
 
     public void setImg_flag(boolean img_flag) {
         this.img_flag = img_flag;
+    }
+
+    public List<UserStudies> getStudy_list() {
+        return study_list;
+    }
+
+    public void setStudy_list(List<UserStudies> study_list) {
+        this.study_list = study_list;
     }
 }

@@ -33,16 +33,15 @@ public class LocalModifyUserModel implements ModifyUserContract.localModel {
     }
 
     @Override
-    public void postPicture(Activity activity, Uri uri) {
+    public void postPicture(Activity activity, String userKey, Uri uri) {
         String realPath = getPathFromUri(activity, uri);
-        //File file = new File(uri.getPath());
         File file = new File(realPath);
 
         RequestBody requestFile = RequestBody.create(MediaType.parse("image/*"), file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("s3_profile_img", file.getName(), requestFile);
 
         UserModifyInterface userModifyInterface = ApiClient.getInstance().create(UserModifyInterface.class);
-        Call<ApiResponse<UserImageVo>> call = userModifyInterface.updateImage(body);
+        Call<ApiResponse<UserImageVo>> call = userModifyInterface.updateImage(userKey, body);
 
         call.enqueue(new Callback<ApiResponse<UserImageVo>>() {
             @Override

@@ -1,6 +1,7 @@
 package com.woon.wisestudytest1.user.modifyuser.netwroking;
 
 import com.woon.wisestudytest1.network.ApiResponse;
+import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserImageVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 
@@ -26,8 +27,8 @@ public interface UserModifyInterface {
 
     //User 정보 업데이트
     @PATCH("/api/v1/users")
-    Call<ApiResponse<UserVo>> updateUser(@Header("x-jwt-token") String userKey,
-                                         @Body UserVo userVo);
+    Call<ApiResponse<UpdateUserVo>> updateUser(@Header("x-jwt-token") String userKey,
+                                               @Body UpdateUserVo updateUserVo);
 
     //User 이미지 업데이트
 
@@ -38,8 +39,9 @@ public interface UserModifyInterface {
      * @return
      */
     @Multipart
-    @POST("/api/v1/test")
-     Call<ApiResponse<UserImageVo>> updateImage(@Part MultipartBody.Part file);
+    @POST("/api/v1/users/image")
+     Call<ApiResponse<UserImageVo>> updateImage(@Header("x-jwt-token") String userKey,
+                                                @Part MultipartBody.Part file);
 
 
 }

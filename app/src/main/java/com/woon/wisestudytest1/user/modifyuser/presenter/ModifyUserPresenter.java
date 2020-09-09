@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 
+import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.model.LocalModifyUserModel;
 import com.woon.wisestudytest1.user.modifyuser.model.RemoteModifyUserModel;
+import com.woon.wisestudytest1.util.RemoteCallback;
 import com.woon.wisestudytest1.util.TokenManager;
 
-public class ModifyUserPresenter implements ModifyUserContract.presenter {
+public class ModifyUserPresenter implements ModifyUserContract.presenter, RemoteCallback {
 
     private ModifyUserContract.view view;
     private ModifyUserContract.remoteModel remoteModel;
@@ -20,7 +22,7 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
 
     public ModifyUserPresenter(ModifyUserContract.view view) {
         this.view = view;
-        remoteModel = new RemoteModifyUserModel(this);
+        remoteModel = new RemoteModifyUserModel(this, this);
         localModel = new LocalModifyUserModel(this);
     }
 
@@ -31,8 +33,8 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
     }
 
     @Override
-    public void upLoadImage(Activity activity, Uri uri) {
-        localModel.postPicture(activity, uri);
+    public void upLoadImage(Activity activity, String userKey, Uri uri) {
+        localModel.postPicture(activity, userKey, uri);
     }
 
     @Override
@@ -46,7 +48,13 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter {
     }
 
     @Override
-    public void updateUserInformation(String userKey, UserVo userVo) {
-        remoteModel.patchUserInformation(userKey, userVo);
+    public void updateUserInformation(String userKey, UpdateUserVo updateUserVo) {
+        remoteModel.patchUserInformation(userKey, updateUserVo);
     }
+
+    @Override
+    public void onSuccess() {
+        view.nextActivity();
+    }
+
 }

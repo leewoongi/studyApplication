@@ -9,15 +9,19 @@ import retrofit2.Response;
 
 import com.woon.wisestudytest1.network.ApiClient;
 import com.woon.wisestudytest1.network.ApiResponse;
+import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.netwroking.UserModifyInterface;
+import com.woon.wisestudytest1.util.RemoteCallback;
 
 public class RemoteModifyUserModel implements ModifyUserContract.remoteModel {
     private ModifyUserContract.presenter presenter;
+    private RemoteCallback remoteCallback;
 
-    public RemoteModifyUserModel(ModifyUserContract.presenter presenter) {
+    public RemoteModifyUserModel(ModifyUserContract.presenter presenter, RemoteCallback remoteCallback) {
         this.presenter = presenter;
+        this.remoteCallback = remoteCallback;
     }
 
     //화면 켜질시 데이터 가져옴
@@ -49,19 +53,20 @@ public class RemoteModifyUserModel implements ModifyUserContract.remoteModel {
     }
 
     @Override
-    public void patchUserInformation(String userKey, UserVo userVo) {
+    public void patchUserInformation(String userKey, UpdateUserVo updateUserVo) {
         UserModifyInterface userModifyInterface = ApiClient.getInstance().create(UserModifyInterface.class);
-        Call<ApiResponse<UserVo>> call = userModifyInterface.updateUser(userKey, userVo);
+        Call<ApiResponse<UpdateUserVo>> call = userModifyInterface.updateUser(userKey, updateUserVo);
 
-        call.enqueue(new Callback<ApiResponse<UserVo>>() {
+        call.enqueue(new Callback<ApiResponse<UpdateUserVo>>() {
             @Override
-            public void onResponse(Call<ApiResponse<UserVo>> call, Response<ApiResponse<UserVo>> response) {
-                UserVo item  = response.body().getMessage();
-                presenter.responseUserInformation(item);
+            public void onResponse(Call<ApiResponse<UpdateUserVo>> call, Response<ApiResponse<UpdateUserVo>> response) {
+                //UserVo item  = response.body().getMessage();
+                //presenter.responseUserInformation(item);
+                remoteCallback.onSuccess();
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<UserVo>> call, Throwable t) {
+            public void onFailure(Call<ApiResponse<UpdateUserVo>> call, Throwable t) {
                 Log.d("UserFailure", t.getMessage());
             }
         });
