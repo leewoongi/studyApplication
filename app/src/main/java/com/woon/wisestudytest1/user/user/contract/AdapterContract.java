@@ -1,6 +1,6 @@
 package com.woon.wisestudytest1.user.user.contract;
 
-public interface AdaterContract {
+public interface AdapterContract {
     interface view{
         void notifyAdapter();
     }

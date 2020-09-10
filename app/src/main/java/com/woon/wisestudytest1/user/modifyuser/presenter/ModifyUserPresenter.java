@@ -38,7 +38,7 @@ public class ModifyUserPresenter implements ModifyUserContract.presenter, Succes
     }
 
     @Override
-    public void bringUserInformation(String userKey) {
+    public void retrieveUserInformation(String userKey) {
         remoteModel.getUserInformation(userKey);
     }
 

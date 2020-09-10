@@ -20,7 +20,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
-import com.woon.wisestudytest1.user.createstudy.view.CreateStudyActivity;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.presenter.ModifyUserPresenter;
 import com.woon.wisestudytest1.user.user.view.UserActivity;
@@ -52,7 +51,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
         presenter = new ModifyUserPresenter(ModifyUserActivity.this);
         userKey = presenter.getJwt(mContext);
         // 유저정보 받아오기
-        presenter.bringUserInformation(userKey);
+        presenter.retrieveUserInformation(userKey);
 
         //이미지 뷰 클릭
         findViewById(R.id.userModifyImageView).setOnClickListener(this);
@@ -91,7 +90,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
     @Override
     public void nextActivity() {
-        Intent intent = new Intent(getApplicationContext(), CreateStudyActivity.class);
+        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
         startActivity(intent);
     }
 

@@ -19,7 +19,7 @@ public interface ModifyUserContract  {
         String getJwt(Context context);
 
         //유저정보 받기
-        void bringUserInformation(String userKey);
+        void retrieveUserInformation(String userKey);
 
          //이미지 보내기
         void upLoadImage(Activity activity,String userKey, Uri uri);
