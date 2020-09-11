@@ -17,7 +17,7 @@
     </com.google.android.material.appbar.MaterialToolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/userImageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:background="@drawable/kakao_editable_profile"
@@ -37,12 +37,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="운기"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/userNameProtoType"
-        app:layout_constraintTop_toTopOf="@+id/circleImageView"></com.google.android.material.textview.MaterialTextView>
+        app:layout_constraintTop_toTopOf="@+id/userImageView"></com.google.android.material.textview.MaterialTextView>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/userNameProtoType"
@@ -66,7 +65,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:text="29세"
         android:textColor="@color/black"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +82,7 @@
         android:text="010-1234-1234"
         android:textColor="@color/black"
         android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/userImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userAge">
 
@@ -101,7 +99,7 @@
         android:layout_marginLeft="32dp"
         android:layout_marginTop="54dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/circleImageView">
+        app:layout_constraintTop_toBottomOf="@+id/userImageView">
 
     </com.google.android.material.textview.MaterialTextView>
 

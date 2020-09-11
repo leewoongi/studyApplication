@@ -1,33 +1,27 @@
 package com.woon.wisestudytest1.user.user.view;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.woon.wisestudytest1.user.user.contract.AdapterContract;
+import com.woon.wisestudytest1.R;
+import com.woon.wisestudytest1.user.Entity.UserStudies;
+import com.woon.wisestudytest1.user.user.contract.UserAdapterContract;
 
-public class UserStudiesAdapter extends RecyclerView.Adapter<UserStudiesAdapter.MyViewHolder>implements AdapterContract.view, AdapterContract.model {
-    @Override
-    public void notifyAdapter() {
+import java.util.List;
 
-    }
+public class UserStudiesAdapter extends RecyclerView.Adapter<UserStudiesAdapter.MyViewHolder> implements UserAdapterContract.adapterView, UserAdapterContract.adapterModel{
 
-    @Override
-    public void addItems() {
-
-    }
-
-    @Override
-    public void clearItems() {
-
-    }
-
+    private List<UserStudies> data;
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_user_recyclerviewitem, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override

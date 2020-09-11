@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.woon.wisestudytest1.R;
-import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.view.ModifyUserActivity;
 import com.woon.wisestudytest1.user.user.contract.UserContract;
@@ -40,11 +38,6 @@ public class UserActivity extends AppCompatActivity implements UserContract.view
 
     @Override
     public void nextActivity() {
-
-    }
-
-    @Override
-    public void addItems() {
 
     }
 
