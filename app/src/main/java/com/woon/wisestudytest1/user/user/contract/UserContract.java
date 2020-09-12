@@ -5,16 +5,17 @@ import com.woon.wisestudytest1.user.Entity.UserVo;
 public interface UserContract {
     interface view{
         void nextActivity();
-        void addItems();
         void showInformation(UserVo userVo);
         void showJoinedStudy();
-        void showFavoriteField();
     }
 
     interface presenter{
         //유저 정보 가져오기
         void retrieveInformation(String userKey);
         void responseUserInformation(UserVo userVo);
+
+        void setImageAdapterView(UserAdapterContract.adapterView adapterView);
+        void setImageAdapterModel(UserAdapterContract.adapterModel adapterModel);
     }
 
     interface remoteModel{

@@ -5,6 +5,7 @@ import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.user.contract.UserAdapterContract;
 import com.woon.wisestudytest1.user.user.contract.UserContract;
 import com.woon.wisestudytest1.user.user.model.RemoteUserModel;
+import com.woon.wisestudytest1.user.user.view.UserStudiesAdapter;
 import com.woon.wisestudytest1.util.SuccessCallback;
 
 import java.util.List;
@@ -13,8 +14,8 @@ public class UserPresenter implements UserContract.presenter, SuccessCallback {
 
     private UserContract.view view;
     private UserContract.remoteModel remoteModel;
-    private UserAdapterContract.adapterView adapterView;
     private UserAdapterContract.adapterModel adapterModel;
+    private UserAdapterContract.adapterView adapterView;
 
     public UserPresenter(UserContract.view view) {
         this.view = view;
