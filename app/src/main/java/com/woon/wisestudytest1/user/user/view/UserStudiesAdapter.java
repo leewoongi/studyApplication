@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.Entity.UserStudies;
 import com.woon.wisestudytest1.user.user.contract.UserAdapterContract;
+import com.woon.wisestudytest1.user.user.contract.UserContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,10 @@ import java.util.List;
 public class UserStudiesAdapter extends RecyclerView.Adapter<UserStudiesAdapter.MyViewHolder> implements UserAdapterContract.adapterView, UserAdapterContract.adapterModel{
 
     private List<UserStudies> data = new ArrayList();
+    private UserContract.presenter presenter;
+
+    public UserStudiesAdapter() {
+    }
 
     @NonNull
     @Override
@@ -40,7 +45,7 @@ public class UserStudiesAdapter extends RecyclerView.Adapter<UserStudiesAdapter.
 
     @Override
     public void refresh() {
-
+        notifyDataSetChanged();
     }
 
     @Override

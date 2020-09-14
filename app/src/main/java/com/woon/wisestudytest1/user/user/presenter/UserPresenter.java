@@ -14,13 +14,15 @@ public class UserPresenter implements UserContract.presenter, SuccessCallback {
 
     private UserContract.view view;
     private UserContract.remoteModel remoteModel;
-    private UserAdapterContract.adapterModel adapterModel;
-    private UserAdapterContract.adapterView adapterView;
+    private UserStudiesAdapter adapter;
 
-    public UserPresenter(UserContract.view view) {
+    public UserPresenter(UserContract.view view, UserStudiesAdapter adapter) {
         this.view = view;
         remoteModel = new RemoteUserModel(this, this);
+        this.adapter = adapter;
     }
+
+
 
     @Override
     public void retrieveInformation(String userKey) {
@@ -28,12 +30,16 @@ public class UserPresenter implements UserContract.presenter, SuccessCallback {
     }
 
     @Override
-    public void responseUserInformation(UserVo userVo) {
-        // 스터디 목록은 adapter로
-        List<UserStudies> studies = userVo.getStudy_list();
-
+    public void responseUserInformation(UserVo userVo){
         // 나머지는 view
         view.showInformation(userVo);
+    }
+
+    @Override
+    public void loadItems(UserVo userVo) {
+        List<UserStudies> studies = userVo.getStudy_list();
+        adapter.addItems(studies);
+        adapter.refresh();
     }
 
     @Override
