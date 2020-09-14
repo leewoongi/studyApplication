@@ -1,6 +1,7 @@
 package com.woon.wisestudytest1.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -8,9 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.woon.wisestudytest1.R;
+import com.woon.wisestudytest1.user.createstudy.view.CreateStudyActivity;
+import com.woon.wisestudytest1.user.schedule.view.ScheduleActivity;
+import com.woon.wisestudytest1.user.user.view.UserActivity;
 
 public class UiHelper {
 
@@ -33,5 +41,49 @@ public class UiHelper {
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
+
+
+    /**
+     * 바텀 네비게이션
+     * @param activity
+     * @param view
+     */
+    public static void navigationOnclick(AppCompatActivity  activity, View view){
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) view;
+        Context context = activity.getApplicationContext();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Class clazz = null;
+
+                switch (item.getItemId()){
+                    case R.id.action_create :
+                        clazz = CreateStudyActivity.class;
+                        break;
+
+                    case R.id.action_schedule :
+                        clazz = ScheduleActivity.class;
+                        break;
+
+                    case R.id.action_search :
+                        break;
+
+                    case R.id.action_my :
+                        clazz = UserActivity.class;
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + item.getItemId());
+                }
+
+                Intent intent = new Intent(context, clazz);
+                activity.startActivity(intent);
+
+                return true;
+            }
+        });
+    }
+
 
 }

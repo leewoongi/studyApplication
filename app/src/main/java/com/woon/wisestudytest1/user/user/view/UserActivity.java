@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textview.MaterialTextView;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.Entity.UserVo;
@@ -38,6 +39,7 @@ public class UserActivity extends AppCompatActivity implements UserContract.view
     private RecyclerView recyclerView;
     private UserStudiesAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class UserActivity extends AppCompatActivity implements UserContract.view
         initialized();
         UiHelper.hideWindow(this);
         UiHelper.toolBarInitialize(this, findViewById(R.id.userToolbar));
-
+        UiHelper.navigationOnclick(this,findViewById(R.id.userBottomNavigation));
         userKey = TokenManager.read(getApplicationContext());
         adapter = new UserStudiesAdapter();
 
@@ -62,6 +64,7 @@ public class UserActivity extends AppCompatActivity implements UserContract.view
 
     private void initialized() {
         recyclerView = findViewById(R.id.userApplyStudyRecyclerView);
+        bottomNavigationView = findViewById(R.id.userBottomNavigation);
         userImageView = findViewById(R.id.userImageView);
         userName = findViewById(R.id.userName);
         userAge = findViewById(R.id.userAge);

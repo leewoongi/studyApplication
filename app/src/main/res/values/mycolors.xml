@@ -2,5 +2,6 @@
 <resources>
     <color name="color_ultra_blue">#222A68</color>
     <color name="color_white">#FFFFFF</color>
+    <color name="color_gray">#808080</color>
 
 </resources>
