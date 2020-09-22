@@ -19,7 +19,6 @@ import java.util.List;
 public class UserStudiesAdapter extends RecyclerView.Adapter<UserStudiesAdapter.MyViewHolder> implements UserAdapterContract.adapterView, UserAdapterContract.adapterModel{
 
     private List<UserStudies> data = new ArrayList();
-    private UserContract.presenter presenter;
 
     public UserStudiesAdapter() {
     }

@@ -1,10 +1,6 @@
 package com.woon.wisestudytest1.user.createstudy.networking;
 
-
-
 import com.woon.wisestudytest1.network.ApiResponse;
-import com.woon.wisestudytest1.user.Entity.CreateStudyVo;
-
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;

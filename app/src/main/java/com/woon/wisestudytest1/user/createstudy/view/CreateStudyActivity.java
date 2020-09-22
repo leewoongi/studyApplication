@@ -17,13 +17,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.woon.wisestudytest1.R;
-import com.woon.wisestudytest1.user.Entity.CreateStudyVo;
+import com.woon.wisestudytest1.user.Entity.StudyVo;
 import com.woon.wisestudytest1.user.createstudy.contract.CreateStudyContract;
 import com.woon.wisestudytest1.user.createstudy.presenter.CreateStudyPresenter;
 import com.woon.wisestudytest1.user.modifyuser.view.ModifyUserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
-
-import java.io.File;
 
 import okhttp3.MultipartBody;
 
@@ -102,20 +100,19 @@ public class CreateStudyActivity extends AppCompatActivity implements CreateStud
 
     @Override
     public void upLoadInformation() {
-        CreateStudyVo studyInformation = getCreateStudy();
+        StudyVo studyInformation = getCreateStudy();
         presenter.registerStudyInformation(userKey, studyInformation);
     }
 
-    private CreateStudyVo getCreateStudy() {
-
+    private StudyVo getCreateStudy() {
         MultipartBody.Part image = studyImage;
         String studyName = userMakeStudy_studyName.getText().toString();
         String studyDescription = userMakeStudy_studyDescription.getText().toString();
         Integer studyNeedMember = Integer.valueOf(userMakeStudy_studyNeedMember.getText().toString());
         String studyField = "안드로이드";
 
-        CreateStudyVo createStudyVo = new CreateStudyVo(studyField, studyName, studyNeedMember, studyDescription, image);
-        return createStudyVo;
+        StudyVo studyVo = new StudyVo(studyField, studyName, studyNeedMember, studyDescription, image);
+        return studyVo;
     }
 
     @Override

@@ -1,24 +1,31 @@
 package com.woon.wisestudytest1.user.Entity;
 
-
-import java.io.File;
-
 import okhttp3.MultipartBody;
 
-public class CreateStudyVo {
+public class DetailStudyVo {
 
+    private Integer study_id;
     private String category;
     private String title;
     private Integer limit;
     private String description;
-    private MultipartBody.Part study_image;
+    private String study_image;
 
-    public CreateStudyVo(String category, String title, Integer limit, String description, MultipartBody.Part study_image) {
+    public DetailStudyVo(Integer study_id, String category, String title, Integer limit, String description, String study_image) {
+        this.study_id = study_id;
         this.category = category;
         this.title = title;
         this.limit = limit;
         this.description = description;
         this.study_image = study_image;
+    }
+
+    public Integer getStudy_id() {
+        return study_id;
+    }
+
+    public void setStudy_id(Integer study_id) {
+        this.study_id = study_id;
     }
 
     public String getCategory() {
@@ -53,11 +60,11 @@ public class CreateStudyVo {
         this.description = description;
     }
 
-    public MultipartBody.Part getStudy_image() {
+    public String getStudy_image() {
         return study_image;
     }
 
-    public void setStudy_image(MultipartBody.Part study_image) {
+    public void setStudy_image(String study_image) {
         this.study_image = study_image;
     }
 }

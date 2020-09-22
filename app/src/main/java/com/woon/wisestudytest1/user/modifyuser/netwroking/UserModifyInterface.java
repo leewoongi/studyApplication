@@ -28,12 +28,6 @@ public interface UserModifyInterface {
 
     //User 이미지 업데이트
 
-    /**
-     * user jwt 넣기
-     *
-     * @param file
-     * @return
-     */
     @Multipart
     @POST("/api/v1/users/image")
      Call<ApiResponse<UserImageVo>> updateImage(@Header("x-jwt-token") String userKey,

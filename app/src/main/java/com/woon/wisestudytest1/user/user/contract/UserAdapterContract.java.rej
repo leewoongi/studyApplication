@@ -1,0 +1,19 @@
+diff a/app/src/main/java/com/woon/wisestudytest1/user/user/contract/UserAdapterContract.java b/app/src/main/java/com/woon/wisestudytest1/user/user/contract/UserAdapterContract.java	(rejected hunks)
+@@ -1,11 +1,16 @@
+ package com.woon.wisestudytest1.user.user.contract;
+ 
++import com.woon.wisestudytest1.user.Entity.UserStudies;
++
++import java.util.List;
++
+ public interface UserAdapterContract {
+     interface adapterView{
+         void refresh();
+     }
+ 
+     interface adapterModel{
+-        void addItems();
++
++        void addItems(List<UserStudies> studies);
+     }
+ }

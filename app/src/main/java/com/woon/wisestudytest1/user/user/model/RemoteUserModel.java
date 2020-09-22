@@ -41,7 +41,7 @@ public class RemoteUserModel implements UserContract.remoteModel {
 
             @Override
             public void onFailure(Call<ApiResponse<UserVo>> call, Throwable t) {
-
+                Log.d("UserFailure", t.getMessage());
             }
         });
     }

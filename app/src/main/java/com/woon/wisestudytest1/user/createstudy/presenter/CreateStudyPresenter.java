@@ -4,18 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 
-import com.woon.wisestudytest1.user.Entity.CreateStudyVo;
+import com.woon.wisestudytest1.user.Entity.StudyVo;
 import com.woon.wisestudytest1.user.createstudy.contract.CreateStudyContract;
 import com.woon.wisestudytest1.user.createstudy.model.LocalModelCreateStudy;
 import com.woon.wisestudytest1.user.createstudy.model.RemoteModelCreateStudy;
 import com.woon.wisestudytest1.util.SuccessCallback;
 import com.woon.wisestudytest1.util.TokenManager;
 
-import java.io.File;
-
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 public class CreateStudyPresenter implements CreateStudyContract.presenter, SuccessCallback {
 
@@ -43,8 +39,8 @@ public class CreateStudyPresenter implements CreateStudyContract.presenter, Succ
     }
 
     @Override
-    public void registerStudyInformation(String userKey, CreateStudyVo createStudyVo) {
-        remoteModel.requestStudyInformation(userKey, createStudyVo);
+    public void registerStudyInformation(String userKey, StudyVo studyVo) {
+        remoteModel.requestStudyInformation(userKey, studyVo);
     }
 
 

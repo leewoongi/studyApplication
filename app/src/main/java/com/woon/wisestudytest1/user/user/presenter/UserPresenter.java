@@ -15,6 +15,8 @@ public class UserPresenter implements UserContract.presenter, SuccessCallback {
     private UserContract.view view;
     private UserContract.remoteModel remoteModel;
     private UserStudiesAdapter adapter;
+    private UserAdapterContract.adapterView adapterView;
+    private UserAdapterContract.adapterModel adapterModel;
 
     public UserPresenter(UserContract.view view, UserStudiesAdapter adapter) {
         this.view = view;

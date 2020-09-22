@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 
-import com.woon.wisestudytest1.user.Entity.CreateStudyVo;
-
-import java.io.File;
+import com.woon.wisestudytest1.user.Entity.StudyVo;
 
 import okhttp3.MultipartBody;
 
@@ -22,11 +20,11 @@ public interface CreateStudyContract {
 
         String getJwt(Context context);
         MultipartBody.Part registerImage(Activity activity, String userKey, Uri uri);
-        void registerStudyInformation(String userKey, CreateStudyVo createStudyVo);
+        void registerStudyInformation(String userKey, StudyVo studyVo);
     };
 
     interface remoteModel{
-        void requestStudyInformation(String userKey, CreateStudyVo createStudyVo);
+        void requestStudyInformation(String userKey, StudyVo studyVo);
     }
 
     interface localModel{

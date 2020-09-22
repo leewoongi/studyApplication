@@ -20,7 +20,6 @@
         android:id="@+id/userMakeStudy_studyImage"
         android:layout_width="0dp"
         android:layout_height="231dp"
-        android:background="#dadada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
