@@ -32,6 +32,10 @@
         <activity android:name=".user.schedule.view.ScheduleActivity"/>
         <activity android:name=".user.detailschedule.view.DetailScheduleActivity"/>
         <activity android:name=".user.createschedule.view.CreateScheduleActivity"/>
+        <activity android:name=".user.managestudy.view.StudyManagementActivity"/>
+        <activity android:name=".user.searchStudy.view.SearchStudyActivity"/>
+        <activity android:name=".user.applystudy.view.ApplyStudyActivity"/>
+        <activity android:name=".user.applyuser.view.ApplyUserActivity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

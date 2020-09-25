@@ -2,7 +2,10 @@ package com.woon.wisestudytest1.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +14,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,7 +22,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.createstudy.view.CreateStudyActivity;
 import com.woon.wisestudytest1.user.schedule.view.ScheduleActivity;
+import com.woon.wisestudytest1.user.searchStudy.view.SearchStudyActivity;
 import com.woon.wisestudytest1.user.user.view.UserActivity;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UiHelper {
 
@@ -68,6 +78,7 @@ public class UiHelper {
                         break;
 
                     case R.id.action_search :
+                        clazz = SearchStudyActivity.class;
                         break;
 
                     case R.id.action_my :
@@ -85,5 +96,39 @@ public class UiHelper {
         });
     }
 
+    public static boolean dialogStart(Context context, String message) {
+        final boolean[] flag = {false};
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        alertDialog.setMessage(message);
+        // 확인버튼
+        alertDialog.setPositiveButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                flag[0] = true;
+            }
+        });
 
+        // 취소버튼
+        alertDialog.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        // 메인 다이얼로그 생성
+        AlertDialog alert = alertDialog.create();
+        // 다이얼로그 보기
+        alert.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface arg0) {
+                alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+                alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+            }
+        });
+
+        alert.show();
+        return flag[0];
+    }
 }

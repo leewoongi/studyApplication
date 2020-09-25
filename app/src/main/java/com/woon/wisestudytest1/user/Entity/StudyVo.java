@@ -1,8 +1,5 @@
 package com.woon.wisestudytest1.user.Entity;
 
-
-import java.io.File;
-
 import okhttp3.MultipartBody;
 
 public class StudyVo {

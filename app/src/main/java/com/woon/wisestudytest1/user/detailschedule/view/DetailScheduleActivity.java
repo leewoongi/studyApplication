@@ -1,5 +1,6 @@
 package com.woon.wisestudytest1.user.detailschedule.view;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +19,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.detailschedule.contract.DetailScheduleContract;
 import com.woon.wisestudytest1.user.detailschedule.presenter.DetailSchedulePresenter;
+import com.woon.wisestudytest1.user.managestudy.view.StudyManagementActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class DetailScheduleActivity extends AppCompatActivity implements DetailScheduleContract.view, TabLayout.OnTabSelectedListener {
@@ -28,6 +30,7 @@ public class DetailScheduleActivity extends AppCompatActivity implements DetailS
     private ShapeableImageView imageView;
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private int study_id;
 
 
     @Override
@@ -41,7 +44,7 @@ public class DetailScheduleActivity extends AppCompatActivity implements DetailS
         initialized();
 
 
-        int study_id = getIntent().getIntExtra("studyId",0);
+        study_id = getIntent().getIntExtra("studyId",0);
         int schedule_id = getIntent().getIntExtra("scheduleId",0);
 
         pageAdapter = new DetailSchedulePageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -78,7 +81,9 @@ public class DetailScheduleActivity extends AppCompatActivity implements DetailS
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.manage){
-
+            Intent intent = new Intent(getApplicationContext(), StudyManagementActivity.class);
+            intent.putExtra("STUDY_ID",study_id);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

@@ -20,6 +20,14 @@ public class DetailStudyVo {
         this.study_image = study_image;
     }
 
+    public DetailStudyVo(String category, String title, Integer limit, String description, String study_image) {
+        this.category = category;
+        this.title = title;
+        this.limit = limit;
+        this.description = description;
+        this.study_image = study_image;
+    }
+
     public Integer getStudy_id() {
         return study_id;
     }

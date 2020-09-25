@@ -31,6 +31,15 @@ public class UserVo {
         this.study_list = study_list;
     }
 
+    public UserVo(Integer user_id, String name, Integer age, String cellphone, String description, String categories) {
+        this.user_id = user_id;
+        this.name = name;
+        this.age = age;
+        this.cellphone = cellphone;
+        this.description = description;
+        this.categories = categories;
+    }
+
     public Integer getUser_id() {
         return user_id;
     }

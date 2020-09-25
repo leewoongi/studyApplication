@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/studySearchToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/studyFieldAuto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:drawableLeft="@drawable/search"
+        android:ems="10"
+        android:gravity="left|center"
+        android:hint="안드로이드"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studySearchToolBar">
+    </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/studySearchRecommendList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추천 스터디"
+        android:textSize="24dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studyFieldAuto">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studySearchRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/study_search_bottom_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/studySearchRecommendList"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/study_search_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/color_gray"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
