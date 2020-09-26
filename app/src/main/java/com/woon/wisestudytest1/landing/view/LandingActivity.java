@@ -16,6 +16,8 @@ import com.woon.wisestudytest1.user.user.view.UserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class LandingActivity extends AppCompatActivity implements LandingContract.view {
+    //userKey = jwt
+    public static String userKey = "";
     private LandingContract.presenter presenter;
 
     private Context mContext;
@@ -42,13 +44,16 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
     @Override
     public void checkUserKey() {
         Intent intent;
-        if(presenter.searchUserKey(mContext) == null){
+        userKey = presenter.searchUserKey(mContext);
+        if( userKey == null){
             intent = new Intent(getApplicationContext(), LoginActivity.class);
         }else{
-            intent = new Intent(getApplicationContext(), LoginActivity.class);
-            //intent = new Intent(getApplicationContext(), UserActivity.class);
+            //jwt 키가 존재하면 유저 화면으로 바로 가기
+            //intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent = new Intent(getApplicationContext(), UserActivity.class);
         }
         startActivity(intent);
+        finish();
     }
 
     @Override

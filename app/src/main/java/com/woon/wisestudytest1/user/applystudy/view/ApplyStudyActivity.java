@@ -13,6 +13,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
 import com.woon.wisestudytest1.R;
+import com.woon.wisestudytest1.landing.view.LandingActivity;
 import com.woon.wisestudytest1.user.applystudy.contract.ApplyStudyContract;
 import com.woon.wisestudytest1.user.applystudy.presenter.ApplyStudyPresenter;
 import com.woon.wisestudytest1.user.searchStudy.view.SearchStudyActivity;
@@ -42,7 +43,7 @@ public class ApplyStudyActivity extends AppCompatActivity implements ApplyStudyC
         initialized();
 
         studyId = getIntent().getIntExtra("STUDY_ID",0);
-        userKey = TokenManager.read(this);
+        userKey = LandingActivity.userKey;
 
         presenter = new ApplyStudyPresenter(this);
         presenter.retrieveStudyInformation(studyId);
@@ -74,9 +75,6 @@ public class ApplyStudyActivity extends AppCompatActivity implements ApplyStudyC
 
     @Override
     public void onClick(View v) {
-        boolean flag = UiHelper.dialogStart(applyStudyButton.getContext(),"신청 하시겠습니까?");
-        if(flag == true){
-            presenter.registerApplyMember(studyId, userKey);
-        }
+        presenter.dialogStart(applyStudyButton.getContext(),"신청 하시겠습니까?",studyId, userKey);
     }
 }

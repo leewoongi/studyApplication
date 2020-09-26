@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.woon.wisestudytest1.R;
+import com.woon.wisestudytest1.landing.view.LandingActivity;
 import com.woon.wisestudytest1.user.applyuser.cotract.ApplyUserContract;
 import com.woon.wisestudytest1.user.applyuser.presenter.ApplyUserPresenter;
 import com.woon.wisestudytest1.util.TokenManager;
@@ -33,7 +34,7 @@ public class ApplyUserActivity extends AppCompatActivity implements ApplyUserCon
         UiHelper.toolBarInitialize(this, findViewById(R.id.presentApplicationToolbar));
 
         study_id = getIntent().getIntExtra("STUDY_ID",0);
-        userKey = TokenManager.read(getApplicationContext());
+        userKey = LandingActivity.userKey;
 
         initialized();
         presenter = new ApplyUserPresenter(this, userKey);

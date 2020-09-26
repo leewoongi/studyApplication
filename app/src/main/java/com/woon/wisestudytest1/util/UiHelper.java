@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -94,41 +95,5 @@ public class UiHelper {
                 return true;
             }
         });
-    }
-
-    public static boolean dialogStart(Context context, String message) {
-        final boolean[] flag = {false};
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-        alertDialog.setMessage(message);
-        // 확인버튼
-        alertDialog.setPositiveButton("예", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                flag[0] = true;
-            }
-        });
-
-        // 취소버튼
-        alertDialog.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        // 메인 다이얼로그 생성
-        AlertDialog alert = alertDialog.create();
-        // 다이얼로그 보기
-        alert.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface arg0) {
-                alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
-                alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
-            }
-        });
-
-        alert.show();
-        return flag[0];
     }
 }

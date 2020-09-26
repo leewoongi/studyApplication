@@ -13,6 +13,7 @@ import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.applyuser.cotract.ApplyUserContract;
 import com.woon.wisestudytest1.user.applyuser.presenter.ApplyUserPresenter;
+import com.woon.wisestudytest1.user.user.view.UserActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,8 +90,10 @@ public class ApplyUserRecyclerViewAdapter extends RecyclerView.Adapter<ApplyUser
             switch (v.getId()){
                 case R.id.presentApplicationAcceptButton :
                     presenter.confirmApply(user_id);
+                    break;
                 case R.id.presentApplicationRejectButton :
                     presenter.rejectApply(user_id);
+                    break;
                 default:
                     break;
             }

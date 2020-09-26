@@ -9,6 +9,8 @@ import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.applystudy.networking.ApplyStudyInterface;
 import com.woon.wisestudytest1.user.applystudy.presenter.ApplyStudyPresenter;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,11 +46,11 @@ public class RemoteApplyStudyModel {
 
     public void postApplyMemberInStudy(int studyId, String userKey){
         ApplyStudyInterface applyStudyInterface = ApiClient.getInstance().create(ApplyStudyInterface.class);
-        Call<ApiResponse<UserVo>> call = applyStudyInterface.postApplyStudy(studyId, userKey);
+        Call<ApiResponse<List<Object>>> call = applyStudyInterface.postApplyStudy(studyId, userKey);
 
-        call.enqueue(new Callback<ApiResponse<UserVo>>() {
+        call.enqueue(new Callback<ApiResponse<List<Object>>>() {
             @Override
-            public void onResponse(Call<ApiResponse<UserVo>> call, Response<ApiResponse<UserVo>> response) {
+            public void onResponse(Call<ApiResponse<List<Object>>> call, Response<ApiResponse<List<Object>>> response) {
                 if(response.isSuccessful() == false){
                     Log.d("applyStudy", "failed to apply");
                 }else{
@@ -57,7 +59,7 @@ public class RemoteApplyStudyModel {
             }
 
             @Override
-            public void onFailure(Call<ApiResponse<UserVo>> call, Throwable t) {
+            public void onFailure(Call<ApiResponse<List<Object>>> call, Throwable t) {
                 Log.d("applyStudy", t.getMessage());
             }
         });

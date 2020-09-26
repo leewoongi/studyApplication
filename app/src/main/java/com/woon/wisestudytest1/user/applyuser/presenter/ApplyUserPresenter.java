@@ -1,5 +1,6 @@
 package com.woon.wisestudytest1.user.applyuser.presenter;
 
+import com.woon.wisestudytest1.landing.view.LandingActivity;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.applyuser.cotract.ApplyUserContract;
 import com.woon.wisestudytest1.user.applyuser.model.RemoteApplyUserModel;
@@ -14,13 +15,11 @@ public class ApplyUserPresenter implements ApplyUserContract.presenter, SuccessC
     private RemoteApplyUserModel remoteApplyUserModel;
     private ApplyUserContract.adapterView adapterView;
     private ApplyUserContract.adapterModel adapterModel;
-    private String userKey;
     private int studyId;
 
     public ApplyUserPresenter(ApplyUserActivity applyUserActivity, String jwt) {
         this.view = applyUserActivity;
         remoteApplyUserModel = new RemoteApplyUserModel(this);
-        userKey = jwt;
     }
 
     @Override
@@ -37,12 +36,12 @@ public class ApplyUserPresenter implements ApplyUserContract.presenter, SuccessC
 
     @Override
     public void confirmApply(int user_id) {
-        remoteApplyUserModel.postConfirmUser(userKey, studyId, user_id);
+        remoteApplyUserModel.postConfirmUser(LandingActivity.userKey, studyId, user_id);
     }
 
     @Override
     public void rejectApply(int user_id) {
-        remoteApplyUserModel.deleteRejectUser(userKey, studyId, user_id);
+        remoteApplyUserModel.deleteRejectUser(LandingActivity.userKey, studyId, user_id);
     }
 
     @Override

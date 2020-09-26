@@ -1,5 +1,6 @@
 package com.woon.wisestudytest1.user.applystudy.contract;
 
+import android.content.Context;
 import android.net.Uri;
 
 import com.woon.wisestudytest1.user.Entity.DetailStudyVo;
@@ -15,7 +16,7 @@ public interface ApplyStudyContract {
         void retrieveStudyInformation(int studyId);
         void responseStudyInformation(DetailStudyVo detailStudyVo);
 
-        void registerApplyMember(int studyId, String userKey);
         void responseApplyMember();
+        void dialogStart(Context context, String message, int studyId, String userKey);
     }
 }

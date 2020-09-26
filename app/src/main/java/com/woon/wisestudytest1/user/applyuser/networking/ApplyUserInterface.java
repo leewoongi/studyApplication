@@ -9,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -18,12 +19,12 @@ public interface ApplyUserInterface {
     @GET("/api/v1/studies/{studies_id}/members/apply")
     Call<ApiResponse<List<UserVo>>> getApplyUser(@Path("studies_id") int study_id);
 
-    @POST("/api/v1/studies/{studies_id}/members/apply")
+    @POST("/api/v1/studies/{studies_id}/members/comfirm")
     Call<ApiResponse<List<Object>>> postConfirmUser(@Path("studies_id") int study_id,
-                                                    @Header("x-jwt-token") String userkey,
+                                                    @Header("x-jwt-token") String userKey,
                                                     @Body int user_id);
 
-    @DELETE("/api/v1/studies/{studies_id}/members/apply")
+    @HTTP(method = "DELETE", path = "/api/v1/studies/{studies_id}/members/comfirm", hasBody = true)
     Call<ApiResponse<List<Object>>> deleteRejectUser(@Path("studies_id") int study_id,
                                                      @Header("x-jwt-token") String userKey,
                                                      @Body int user_id);

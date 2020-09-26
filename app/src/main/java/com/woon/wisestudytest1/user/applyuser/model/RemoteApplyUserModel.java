@@ -52,6 +52,7 @@ public class RemoteApplyUserModel {
                 if(response.isSuccessful() == false){
                     Log.d("confirm", "fail");
                 }else{
+                    response.body();
                     presenter.onSuccess();
                 }
             }
