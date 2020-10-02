@@ -1,32 +1,28 @@
-package com.woon.wisestudytest1.user.user.model;
+package com.woon.wisestudytest1.main.model;
 
 import android.util.Log;
+
+import com.woon.wisestudytest1.main.contract.MainContract;
+import com.woon.wisestudytest1.main.networking.MainApiInterface;
+import com.woon.wisestudytest1.network.ApiClient;
+import com.woon.wisestudytest1.network.ApiResponse;
+import com.woon.wisestudytest1.user.Entity.UserVo;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import com.woon.wisestudytest1.network.ApiClient;
-import com.woon.wisestudytest1.network.ApiResponse;
-import com.woon.wisestudytest1.user.Entity.UserVo;
-import com.woon.wisestudytest1.user.user.contract.UserContract;
-import com.woon.wisestudytest1.user.user.networking.UserApiInterface;
-import com.woon.wisestudytest1.util.SuccessCallback;
 
-public class RemoteUserModel implements UserContract.remoteModel {
+public class MainRemoteModel {
 
-    private UserContract.presenter presenter;
-    private SuccessCallback successCallback;
-
-    public RemoteUserModel(UserContract.presenter presenter, SuccessCallback successCallback) {
+    private MainContract.presenter presenter;
+    public MainRemoteModel(MainContract.presenter presenter) {
         this.presenter = presenter;
-        this.successCallback = successCallback;
     }
 
-    @Override
     public void getUserInformation(String userKey) {
-        UserApiInterface userApiInterface = ApiClient.getInstance().create(UserApiInterface.class);
-        Call<ApiResponse<UserVo>> call = userApiInterface.retrieveUser(userKey);
+        MainApiInterface mainApiInterface = ApiClient.getInstance().create(MainApiInterface.class);
+        Call<ApiResponse<UserVo>> call = mainApiInterface.retrieveUser(userKey);
 
         call.enqueue(new Callback<ApiResponse<UserVo>>() {
             @Override

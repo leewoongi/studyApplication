@@ -26,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".login.view.LoginActivity"/>
+        <activity android:name=".main.view.MainActivity"/>
         <activity android:name=".user.user.view.UserActivity"/>
         <activity android:name=".user.modifyuser.view.ModifyUserActivity"/>
         <activity android:name=".user.createstudy.view.CreateStudyActivity"/>

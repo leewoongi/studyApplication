@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/plannerToolBarId"
         android:layout_width="match_parent"
@@ -17,22 +18,21 @@
 
     <CalendarView
         android:id="@+id/calendarId"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="297dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plannerToolBarId">
 
     </CalendarView>
-
 
     <TextView
         android:id="@+id/dayId"
         android:layout_width="62dp"
         android:layout_height="27dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
         android:lineSpacingExtra="7sp"
         android:text="D-DAY"
@@ -41,32 +41,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/calendarId"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/calendarId"
+        app:layout_constraintStart_toStartOf="@+id/plannerRecyclerId"
         app:layout_constraintTop_toBottomOf="@+id/calendarId">
 
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/plannerRecyclerId"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="250dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/dayId"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dayId">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/plannerBottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/color_gray"
-        app:menu="@menu/bottom_navigation"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

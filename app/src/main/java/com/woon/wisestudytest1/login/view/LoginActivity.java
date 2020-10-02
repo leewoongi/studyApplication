@@ -17,6 +17,7 @@ import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.login.contract.LoginContract;
 import com.woon.wisestudytest1.login.presenter.LoginPresenter;
 import com.woon.wisestudytest1.user.modifyuser.view.ModifyUserActivity;
+import com.woon.wisestudytest1.util.TokenManager;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.view, View.OnClickListener {
@@ -82,7 +83,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void loginSuccess() {
-        userKey = presenter.getJwt(mContext);
+        userKey = TokenManager.read(mContext);
+        //userKey = presenter.getJwt(mContext);
         Intent intent = new Intent(this, ModifyUserActivity.class);
         startActivity(intent);
     }

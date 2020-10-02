@@ -14,7 +14,6 @@ public class LoginPresenter implements LoginContract.presenter{
     private LoginContract.view view;
     private LoginContract.remoteModel remoteModel;
     private LoginContract.localModel localModel;
-
     public LoginPresenter(LoginContract.view view) {
         this.view = view;
         remoteModel = new RemoteLoginModel(this);

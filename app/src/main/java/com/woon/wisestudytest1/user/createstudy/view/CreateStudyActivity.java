@@ -44,7 +44,7 @@ public class CreateStudyActivity extends AppCompatActivity implements CreateStud
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_createstudy);
+        setContentView(R.layout.activity_main__createstudy_fragment);
         UiHelper.hideWindow(this);
         UiHelper.toolBarInitialize(this, findViewById(R.id.userMakeStudy_toolbar));
         initialized();

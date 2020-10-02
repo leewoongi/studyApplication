@@ -28,7 +28,7 @@ public class SearchStudyActivity extends AppCompatActivity implements SearchStud
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_study);
+        setContentView(R.layout.activity_main_search_study_fragment);
 
         UiHelper.hideWindow(this);
         UiHelper.toolBarInitialize(this, findViewById(R.id.studySearchToolBar));

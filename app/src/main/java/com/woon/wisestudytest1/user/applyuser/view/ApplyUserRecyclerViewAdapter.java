@@ -13,8 +13,6 @@ import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.applyuser.cotract.ApplyUserContract;
 import com.woon.wisestudytest1.user.applyuser.presenter.ApplyUserPresenter;
-import com.woon.wisestudytest1.user.user.view.UserActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 

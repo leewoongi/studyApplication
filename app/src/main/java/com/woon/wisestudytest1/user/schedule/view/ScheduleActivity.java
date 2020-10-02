@@ -34,11 +34,10 @@ public class ScheduleActivity extends AppCompatActivity implements ScheduleContr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedule);
+        setContentView(R.layout.activity_main_schedule_fragment);
 
         UiHelper.toolBarInitialize(this, findViewById(R.id.plannerToolBarId));
         UiHelper.hideWindow(this);
-        UiHelper.navigationOnclick(this, findViewById(R.id.plannerBottomNavigation));
 
         initialized();
         recyclerViewInit();

@@ -24,7 +24,6 @@ import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.createstudy.view.CreateStudyActivity;
 import com.woon.wisestudytest1.user.schedule.view.ScheduleActivity;
 import com.woon.wisestudytest1.user.searchStudy.view.SearchStudyActivity;
-import com.woon.wisestudytest1.user.user.view.UserActivity;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -51,49 +50,5 @@ public class UiHelper {
     public static void hideWindow(AppCompatActivity activity) {
         activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
-
-
-    /**
-     * 바텀 네비게이션
-     * @param activity
-     * @param view
-     */
-    public static void navigationOnclick(AppCompatActivity  activity, View view){
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) view;
-        Context context = activity.getApplicationContext();
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Class clazz = null;
-
-                switch (item.getItemId()){
-                    case R.id.action_create :
-                        clazz = CreateStudyActivity.class;
-                        break;
-
-                    case R.id.action_schedule :
-                        clazz = ScheduleActivity.class;
-                        break;
-
-                    case R.id.action_search :
-                        clazz = SearchStudyActivity.class;
-                        break;
-
-                    case R.id.action_my :
-                        clazz = UserActivity.class;
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + item.getItemId());
-                }
-
-                Intent intent = new Intent(context, clazz);
-                activity.startActivity(intent);
-
-                return true;
-            }
-        });
     }
 }

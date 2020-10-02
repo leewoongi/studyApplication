@@ -20,10 +20,9 @@
         android:id="@+id/userImageView"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:background="@drawable/kakao_editable_profile"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/kakao_editable_profile"
         app:civ_border_width="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userToolbar">
@@ -41,14 +40,15 @@
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/userNameProtoType"
-        app:layout_constraintTop_toTopOf="@+id/userImageView"></com.google.android.material.textview.MaterialTextView>
+        app:layout_constraintTop_toTopOf="@+id/userImageView">
+
+    </com.google.android.material.textview.MaterialTextView>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/userNameProtoType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="4dp"
         android:text="님 안녕하세요"
         android:textColor="@color/black"
@@ -63,8 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="60dp"
         android:textColor="@color/black"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,8 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="60dp"
         android:text="010-1234-1234"
         android:textColor="@color/black"
         android:textSize="14dp"
@@ -90,14 +88,13 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/userApplyStudy"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="54dp"
         android:text="가입된 스터디"
         android:textColor="@color/black"
         android:textSize="17dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="54dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userImageView">
 
@@ -107,8 +104,7 @@
         android:id="@+id/userApplyStudyRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userApplyStudy">
@@ -117,33 +113,15 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/userField"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="46dp"
         android:text="관심분야"
         android:textColor="@color/black"
         android:textSize="17dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="46dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userApplyStudyRecyclerView">
 
     </com.google.android.material.textview.MaterialTextView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/userBottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/color_gray"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navigation">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

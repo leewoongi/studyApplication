@@ -18,11 +18,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.textfield.TextInputEditText;
 import com.woon.wisestudytest1.R;
+import com.woon.wisestudytest1.login.view.LoginActivity;
+import com.woon.wisestudytest1.main.view.MainActivity;
 import com.woon.wisestudytest1.user.Entity.UpdateUserVo;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.user.modifyuser.contract.ModifyUserContract;
 import com.woon.wisestudytest1.user.modifyuser.presenter.ModifyUserPresenter;
-import com.woon.wisestudytest1.user.user.view.UserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class ModifyUserActivity extends AppCompatActivity implements ModifyUserContract.view, View.OnClickListener {
@@ -49,7 +50,7 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
         initialized();
 
         presenter = new ModifyUserPresenter(ModifyUserActivity.this);
-        userKey = presenter.getJwt(mContext);
+        userKey = LoginActivity.userKey;
         // 유저정보 받아오기
         presenter.retrieveUserInformation(userKey);
 
@@ -90,8 +91,10 @@ public class ModifyUserActivity extends AppCompatActivity implements ModifyUserC
 
     @Override
     public void nextActivity() {
-        Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("RESULT",2);
         startActivity(intent);
+        finish();
     }
 
     @Override

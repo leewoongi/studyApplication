@@ -12,11 +12,10 @@ import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.landing.contract.LandingContract;
 import com.woon.wisestudytest1.landing.presenter.LandingPresenter;
 import com.woon.wisestudytest1.login.view.LoginActivity;
-import com.woon.wisestudytest1.user.user.view.UserActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class LandingActivity extends AppCompatActivity implements LandingContract.view {
-    //userKey = jwt
+    //userKey = jwt(앱이 처음 실행인지 아닌지 확인 하기 위해)
     public static String userKey = "";
     private LandingContract.presenter presenter;
 
@@ -49,8 +48,9 @@ public class LandingActivity extends AppCompatActivity implements LandingContrac
             intent = new Intent(getApplicationContext(), LoginActivity.class);
         }else{
             //jwt 키가 존재하면 유저 화면으로 바로 가기
-            //intent = new Intent(getApplicationContext(), LoginActivity.class);
-            intent = new Intent(getApplicationContext(), UserActivity.class);
+            intent = new Intent(getApplicationContext(), LoginActivity.class);
+            //intent = new Intent(getApplicationContext(), UserActivity.class);
+            intent.putExtra("RESULT",1);
         }
         startActivity(intent);
         finish();

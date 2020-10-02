@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,10 +17,30 @@
 
     </com.google.android.material.appbar.MaterialToolbar>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/createStudyImageGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:text="클릭해서 이미지를 넣어주세요."
+        android:textColor="@color/black"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/userMakeStudy_studyImage"
+        app:layout_constraintEnd_toEndOf="@+id/userMakeStudy_studyImage"
+        app:layout_constraintStart_toStartOf="@+id/userMakeStudy_studyImage"
+        app:layout_constraintTop_toBottomOf="@+id/userMakeStudy_toolbar"
+        app:layout_constraintVertical_bias="0.445">
+
+    </com.google.android.material.textview.MaterialTextView>
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/userMakeStudy_studyImage"
         android:layout_width="0dp"
         android:layout_height="231dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,12 +48,12 @@
 
     </com.google.android.material.imageview.ShapeableImageView>
 
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/userMakeStudy_studyNameTitle"
         android:layout_width="84dp"
         android:layout_height="27dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="스터디명"
@@ -47,8 +68,7 @@
         android:id="@+id/userMakeStudy_studyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:hint="스터디명을 입력하세요"
         android:inputType="text"
@@ -61,8 +81,7 @@
         android:id="@+id/userMakeStudy_studyDescriptionTitle"
         android:layout_width="84dp"
         android:layout_height="27dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="한줄소개"
@@ -77,8 +96,7 @@
         android:id="@+id/userMakeStudy_studyDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:hint="소개를 입력하세요"
         android:inputType="text"
@@ -91,8 +109,7 @@
         android:id="@+id/userMakeStudy_studyNeedMemberTitle"
         android:layout_width="84dp"
         android:layout_height="27dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="모집 인원"
@@ -107,8 +124,7 @@
         android:id="@+id/userMakeStudy_studyNeedMember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:hint="3"
         android:inputType="number"
@@ -121,8 +137,7 @@
         android:id="@+id/userMakeStudy_studyFieldTitle"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="분야"
