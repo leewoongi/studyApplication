@@ -1,12 +1,12 @@
-package com.woon.wisestudytest1.user.createstudy.model;
+package com.woon.wisestudytest1.main.model;
 
 import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-import com.woon.wisestudytest1.user.createstudy.contract.CreateStudyContract;
-import com.woon.wisestudytest1.util.SuccessCallback;
+import com.woon.wisestudytest1.main.contract.MainContract;
+import com.woon.wisestudytest1.main.presenter.MainPresenter;
 
 import java.io.File;
 
@@ -14,14 +14,13 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class LocalModelCreateStudy implements CreateStudyContract.localModel {
+public class MainLocalModel {
 
-    private CreateStudyContract.presenter presenter;
-    public LocalModelCreateStudy(CreateStudyContract.presenter presenter, SuccessCallback successCallback) {
-
+    private MainContract.presenter presenter;
+    public MainLocalModel(MainContract.presenter presenter) {
+        this.presenter = presenter;
     }
 
-    @Override
     public MultipartBody.Part getPicture(Activity activity, String userKey, Uri uri) {
 
         String realPath = getPathFromUri(activity, uri);

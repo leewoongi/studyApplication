@@ -1,4 +1,4 @@
-package com.woon.wisestudytest1.user.Entity;
+package com.woon.wisestudytest1.main.Entity;
 
 import okhttp3.MultipartBody;
 

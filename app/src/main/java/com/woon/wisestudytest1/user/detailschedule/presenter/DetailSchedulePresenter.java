@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
 import com.woon.wisestudytest1.user.Entity.DetailStudyVo;
-import com.woon.wisestudytest1.user.Entity.StudyVo;
 import com.woon.wisestudytest1.user.Entity.UserSchedules;
 import com.woon.wisestudytest1.user.detailschedule.contract.DetailScheduleContract;
 import com.woon.wisestudytest1.user.detailschedule.contract.DetailSchedulePageAdapterContract;

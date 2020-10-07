@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 
 import com.woon.wisestudytest1.user.Entity.DetailStudyVo;
-import com.woon.wisestudytest1.user.Entity.StudyVo;
 import com.woon.wisestudytest1.user.Entity.UserSchedules;
 
 public interface DetailScheduleContract {

@@ -21,7 +21,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.woon.wisestudytest1.R;
-import com.woon.wisestudytest1.user.createstudy.view.CreateStudyActivity;
 import com.woon.wisestudytest1.user.schedule.view.ScheduleActivity;
 import com.woon.wisestudytest1.user.searchStudy.view.SearchStudyActivity;
 

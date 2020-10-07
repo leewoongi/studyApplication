@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.user.applyuser.view.ApplyUserActivity;
-import com.woon.wisestudytest1.user.createstudy.view.CreateStudyActivity;
 import com.woon.wisestudytest1.util.UiHelper;
 
 public class StudyManagementActivity extends AppCompatActivity implements View.OnClickListener {
@@ -52,8 +51,7 @@ public class StudyManagementActivity extends AppCompatActivity implements View.O
         Intent intent;
         switch (v.getId()){
             case R.id.managementCreateStudy:
-                intent = new Intent(getApplicationContext(), CreateStudyActivity.class);
-                startActivity(intent);
+
             case R.id.manageCurrentApply:
                 intent = new Intent(getApplicationContext(), ApplyUserActivity.class);
                 intent.putExtra("STUDY_ID",study_id);

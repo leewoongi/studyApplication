@@ -2,6 +2,7 @@ package com.woon.wisestudytest1.main.view;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,7 +19,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.textview.MaterialTextView;
 import com.woon.wisestudytest1.R;
 import com.woon.wisestudytest1.main.contract.MainContract;
-import com.woon.wisestudytest1.main.contract.MainFragmentContract;
 import com.woon.wisestudytest1.main.presenter.MainPresenter;
 import com.woon.wisestudytest1.user.Entity.UserVo;
 import com.woon.wisestudytest1.util.UiHelper;
@@ -26,7 +26,7 @@ import com.woon.wisestudytest1.util.UiHelper;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MyPageFragment extends Fragment implements MainFragmentContract.fragmentView {
+public class MyPageFragment extends Fragment implements MainContract.fragmentView {
 
     public static int myId;
 
@@ -75,7 +75,6 @@ public class MyPageFragment extends Fragment implements MainFragmentContract.fra
 
     @Override
     public void initialized() {
-
         recyclerView = rootView.findViewById(R.id.userApplyStudyRecyclerView);
         userImageView = rootView.findViewById(R.id.userImageView);
         userName = rootView.findViewById(R.id.userName);
@@ -90,7 +89,14 @@ public class MyPageFragment extends Fragment implements MainFragmentContract.fra
     }
 
     @Override
-    public void showFragment(UserVo userVo) {
+    public void showFragment(Object data) {
+
+        if(!(data instanceof UserVo)){
+            Log.d("여기냐", " 설마 ");
+            return;
+        }
+
+        UserVo userVo = (UserVo)data;
         myId = userVo.getUser_id();
         if(userVo.isImg_flag() == true){
             UserImageUri = Uri.parse(userVo.getKakao_profile_img());

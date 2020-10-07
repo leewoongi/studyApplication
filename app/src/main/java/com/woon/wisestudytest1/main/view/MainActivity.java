@@ -67,11 +67,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.view
     }
 
     @Override
-    public void showFragment() {
-
-    }
-
-    @Override
     public void onTabSelected(TabLayout.Tab tab) {
         mainViewPager.setCurrentItem(tab.getPosition());
     }

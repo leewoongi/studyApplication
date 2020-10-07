@@ -1,10 +1,14 @@
 package com.woon.wisestudytest1.main.presenter;
 
+import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import com.woon.wisestudytest1.main.Entity.StudyVo;
 import com.woon.wisestudytest1.main.contract.MainContract;
+import com.woon.wisestudytest1.main.model.MainLocalModel;
 import com.woon.wisestudytest1.main.model.MainRemoteModel;
 import com.woon.wisestudytest1.main.view.CreateStudyFragment;
 import com.woon.wisestudytest1.main.view.MyPageFragment;
@@ -16,10 +20,13 @@ import com.woon.wisestudytest1.user.Entity.UserVo;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
+
 public class MainPresenter implements MainContract.presenter {
 
     private MainContract.view view;
     private MainRemoteModel remoteModel;
+    private MainLocalModel localModel;
     private MainContract.recyclerAdapterView recyclerAdapterView;
     private MainContract.recyclerAdapterModel recyclerAdapterModel;
     private MainContract.pageAdapterView pageAdapterView;
@@ -38,6 +45,7 @@ public class MainPresenter implements MainContract.presenter {
         scheduleFragment = new ScheduleFragment(this);
         searchFragment = new SearchFragment(this);
         remoteModel = new MainRemoteModel(this);
+        localModel = new MainLocalModel(this);
     }
 
 
@@ -62,6 +70,7 @@ public class MainPresenter implements MainContract.presenter {
         page.add(searchFragment);
 
         page.get(0).setArguments(bundle);
+        page.get(1).setArguments(bundle);
 
         pageAdapterModel.addFragments(page);
         pageAdapterView.refresh();
@@ -73,6 +82,14 @@ public class MainPresenter implements MainContract.presenter {
         recyclerAdapterModel.addItems(studies);
         recyclerAdapterView.refresh();
     }
+
+    //스터디 생성 registerImage , registerStudyInformation
+
+    @Override
+    public void registerStudyInformation(Activity activity, String userKey, Uri uri, String category, String title, Integer limit, String description) {
+        remoteModel.requestStudyInformation(activity, userKey, uri, category, title, limit, description);
+    }
+
 
     @Override
     public void setViewPagerView(MainContract.pageAdapterView pageAdapterView) {

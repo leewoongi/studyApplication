@@ -9,7 +9,6 @@ import retrofit2.Response;
 import com.woon.wisestudytest1.network.ApiClient;
 import com.woon.wisestudytest1.network.ApiResponse;
 import com.woon.wisestudytest1.user.Entity.DetailStudyVo;
-import com.woon.wisestudytest1.user.Entity.StudyVo;
 import com.woon.wisestudytest1.user.Entity.UserSchedules;
 import com.woon.wisestudytest1.user.detailschedule.networking.DetailScheduleInterface;
 import com.woon.wisestudytest1.user.detailschedule.presenter.DetailSchedulePresenter;
