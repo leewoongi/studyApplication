@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.woon.wisestudytest1">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:name=".application.LoginInit">
+
+        <activity android:name=".landing.view.LandingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".login.view.LoginActivity"/>
+        <activity android:name=".main.view.MainActivity"/>
+        <activity android:name=".user.user.view.UserActivity"/>
+        <activity android:name=".user.modifyuser.view.ModifyUserActivity"/>
+        <activity android:name=".user.createstudy.view.CreateStudyActivity"/>
+        <activity android:name=".user.schedule.view.ScheduleActivity"/>
+        <activity android:name=".user.detailschedule.view.DetailScheduleActivity"/>
+        <activity android:name=".user.createschedule.view.CreateScheduleActivity"/>
+        <activity android:name=".user.managestudy.view.StudyManagementActivity"/>
+        <activity android:name=".user.searchStudy.view.SearchStudyActivity"/>
+        <activity android:name=".user.applystudy.view.ApplyStudyActivity"/>
+        <activity android:name=".user.applyuser.view.ApplyUserActivity"/>
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="da6534d56d532680d48e8d7059154024"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "favoriteField">
+        <item>안드로이드</item>
+        <item>서버</item>
+        <item>딥러닝</item>
+        <item>자바</item>
+        <item>스프링</item>
+        <item>프론트</item>
+        <item>백엔드</item>
+        <item>리액트</item>
+        <item>ios</item>
+        <item>어몽어스</item>
+    </string-array>
+</resources>

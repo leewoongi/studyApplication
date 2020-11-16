@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/plannerDetailDescription"
+        android:layout_width="319dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="24dp"
+        android:hint="안드로이드 2회차 스터디입니다."
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/plannerDetailDescriptionTitle"
+        app:layout_constraintTop_toBottomOf="@+id/plannerDetailDescriptionTitle">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/plannerDetailDescriptionTitle"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:text="일정내용"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/plannerDetailLocation"
+        android:layout_width="327dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="24dp"
+        android:hint="안양역 커피빈 입니다."
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/plannerDetailLocationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/plannerDetailLocationTitle">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/plannerDetailLocationTitle"
+        android:layout_width="80dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:text="장소"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plannerDetailDescription">
+
+    </com.google.android.material.textview.MaterialTextView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/detailScheduleCreateSchedule"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:text="일정 추가"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:background="@drawable/button_click_effect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.google.android.material.button.MaterialButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
